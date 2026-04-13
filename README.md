@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Grocery Store Management Application
 ## INFORMATION
 - **Application languages:** Vietnamese (gui), English (code)
@@ -28,3 +29,6 @@
 
 [__IMAGE LINK__](https://photos.app.goo.gl/V2NPiqFeZXUaQ15s7) <br>
 [SQL Backup](https://drive.google.com/file/d/1rWwytbMCWj0HcJN04EM3t3B6cM2pZ0ek/view?usp=drive_link)
+=======
+# AppCuoiKy
+>>>>>>> 8ea73830ef79ab185d4071f62fac0ec509237d25
