@@ -131,13 +131,41 @@ namespace BasicGroceryStore
 
         private void dgvImportHistory_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (dgvImportHistory.CurrentRow == null) return;
+
             Imported bill = new Imported();
             bill.ID = dgvImportHistory.CurrentRow.Cells[0].Value.ToString();
             bill.DateCreate = (DateTime)dgvImportHistory.CurrentRow.Cells[1].Value;
             bill.Value = float.Parse(dgvImportHistory.CurrentRow.Cells[2].Value.ToString());
             bill.StaffID = dgvImportHistory.CurrentRow.Cells[3].Value.ToString();
 
-            new FormBill(bill).Show();
+            // Hiển thị dữ liệu lên chart
+            cbInformationPlus.Series.Clear();
+            cbInformationPlus.ChartAreas.Clear();
+
+            cbInformationPlus.ChartAreas.Add("MainArea");
+            cbInformationPlus.Series.Add("Thông tin hóa đơn");
+
+            cbInformationPlus.Series["Thông tin hóa đơn"].Points.AddXY("Giá trị", bill.Value);
+        }
+        private void cbInformationPlus_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlMain_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnMakeChartProduct_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnOutputReport_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

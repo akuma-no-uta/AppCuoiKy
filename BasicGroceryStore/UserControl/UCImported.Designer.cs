@@ -30,12 +30,13 @@ namespace BasicGroceryStore
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.gbMakeBill = new System.Windows.Forms.GroupBox();
             this.btnMakeBills = new System.Windows.Forms.Button();
             this.btnCancelBill = new System.Windows.Forms.Button();
             this.gbListProduct = new System.Windows.Forms.GroupBox();
+            this.flowpnl_Item = new System.Windows.Forms.FlowLayoutPanel();
             this.dtPickDateCreate = new System.Windows.Forms.DateTimePicker();
             this.txtStaffName = new System.Windows.Forms.TextBox();
             this.txtBillID = new System.Windows.Forms.TextBox();
@@ -64,7 +65,6 @@ namespace BasicGroceryStore
             this.chbPrice = new System.Windows.Forms.CheckBox();
             this.chbName = new System.Windows.Forms.CheckBox();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.flowpnl_Item = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlMain.SuspendLayout();
             this.gbMakeBill.SuspendLayout();
             this.gbListProduct.SuspendLayout();
@@ -88,8 +88,6 @@ namespace BasicGroceryStore
             // gbMakeBill
             // 
             this.gbMakeBill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(158)))), ((int)(((byte)(247)))));
-            this.gbMakeBill.Controls.Add(this.btnMakeBills);
-            this.gbMakeBill.Controls.Add(this.btnCancelBill);
             this.gbMakeBill.Controls.Add(this.gbListProduct);
             this.gbMakeBill.Controls.Add(this.dtPickDateCreate);
             this.gbMakeBill.Controls.Add(this.txtStaffName);
@@ -100,16 +98,16 @@ namespace BasicGroceryStore
             this.gbMakeBill.Controls.Add(this.label3);
             this.gbMakeBill.Controls.Add(this.label2);
             this.gbMakeBill.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbMakeBill.Location = new System.Drawing.Point(706, 3);
+            this.gbMakeBill.Location = new System.Drawing.Point(536, 0);
             this.gbMakeBill.Name = "gbMakeBill";
-            this.gbMakeBill.Size = new System.Drawing.Size(641, 854);
+            this.gbMakeBill.Size = new System.Drawing.Size(522, 630);
             this.gbMakeBill.TabIndex = 6;
             this.gbMakeBill.TabStop = false;
             this.gbMakeBill.Text = "Tạo thông tin nhập hàng";
             // 
             // btnMakeBills
             // 
-            this.btnMakeBills.Location = new System.Drawing.Point(452, 812);
+            this.btnMakeBills.Location = new System.Drawing.Point(318, 298);
             this.btnMakeBills.Name = "btnMakeBills";
             this.btnMakeBills.Size = new System.Drawing.Size(183, 36);
             this.btnMakeBills.TabIndex = 38;
@@ -119,7 +117,7 @@ namespace BasicGroceryStore
             // 
             // btnCancelBill
             // 
-            this.btnCancelBill.Location = new System.Drawing.Point(6, 812);
+            this.btnCancelBill.Location = new System.Drawing.Point(6, 298);
             this.btnCancelBill.Name = "btnCancelBill";
             this.btnCancelBill.Size = new System.Drawing.Size(183, 36);
             this.btnCancelBill.TabIndex = 32;
@@ -129,13 +127,26 @@ namespace BasicGroceryStore
             // 
             // gbListProduct
             // 
+            this.gbListProduct.Controls.Add(this.btnMakeBills);
             this.gbListProduct.Controls.Add(this.flowpnl_Item);
+            this.gbListProduct.Controls.Add(this.btnCancelBill);
             this.gbListProduct.Location = new System.Drawing.Point(6, 239);
             this.gbListProduct.Name = "gbListProduct";
             this.gbListProduct.Size = new System.Drawing.Size(629, 567);
             this.gbListProduct.TabIndex = 37;
             this.gbListProduct.TabStop = false;
             this.gbListProduct.Text = "Danh sách sản phẩm nhập kho";
+            // 
+            // flowpnl_Item
+            // 
+            this.flowpnl_Item.AutoScroll = true;
+            this.flowpnl_Item.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.flowpnl_Item.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.flowpnl_Item.Location = new System.Drawing.Point(6, 29);
+            this.flowpnl_Item.Name = "flowpnl_Item";
+            this.flowpnl_Item.Size = new System.Drawing.Size(495, 254);
+            this.flowpnl_Item.TabIndex = 1;
+            this.toolTip.SetToolTip(this.flowpnl_Item, "Nhấn đúp chuột vào sản phẩm để thêm vào giỏ hàng");
             // 
             // dtPickDateCreate
             // 
@@ -146,7 +157,7 @@ namespace BasicGroceryStore
             this.dtPickDateCreate.MaxDate = new System.DateTime(2100, 12, 31, 0, 0, 0, 0);
             this.dtPickDateCreate.MinDate = new System.DateTime(1980, 1, 1, 0, 0, 0, 0);
             this.dtPickDateCreate.Name = "dtPickDateCreate";
-            this.dtPickDateCreate.Size = new System.Drawing.Size(351, 22);
+            this.dtPickDateCreate.Size = new System.Drawing.Size(318, 30);
             this.dtPickDateCreate.TabIndex = 36;
             this.dtPickDateCreate.Value = new System.DateTime(2022, 2, 4, 0, 0, 0, 0);
             // 
@@ -154,7 +165,7 @@ namespace BasicGroceryStore
             // 
             this.txtStaffName.Location = new System.Drawing.Point(189, 43);
             this.txtStaffName.Name = "txtStaffName";
-            this.txtStaffName.Size = new System.Drawing.Size(446, 22);
+            this.txtStaffName.Size = new System.Drawing.Size(318, 30);
             this.txtStaffName.TabIndex = 35;
             // 
             // txtBillID
@@ -162,7 +173,7 @@ namespace BasicGroceryStore
             this.txtBillID.Location = new System.Drawing.Point(189, 90);
             this.txtBillID.Name = "txtBillID";
             this.txtBillID.ReadOnly = true;
-            this.txtBillID.Size = new System.Drawing.Size(351, 22);
+            this.txtBillID.Size = new System.Drawing.Size(318, 30);
             this.txtBillID.TabIndex = 34;
             // 
             // txtTotalPrice
@@ -170,7 +181,7 @@ namespace BasicGroceryStore
             this.txtTotalPrice.Location = new System.Drawing.Point(189, 187);
             this.txtTotalPrice.Name = "txtTotalPrice";
             this.txtTotalPrice.ReadOnly = true;
-            this.txtTotalPrice.Size = new System.Drawing.Size(351, 22);
+            this.txtTotalPrice.Size = new System.Drawing.Size(318, 30);
             this.txtTotalPrice.TabIndex = 33;
             // 
             // label6
@@ -178,7 +189,7 @@ namespace BasicGroceryStore
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(18, 187);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 16);
+            this.label6.Size = new System.Drawing.Size(94, 25);
             this.label6.TabIndex = 3;
             this.label6.Text = "Tổng tiền";
             // 
@@ -187,7 +198,7 @@ namespace BasicGroceryStore
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(18, 140);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 16);
+            this.label4.Size = new System.Drawing.Size(90, 25);
             this.label4.TabIndex = 2;
             this.label4.Text = "Ngày tạo";
             // 
@@ -196,7 +207,7 @@ namespace BasicGroceryStore
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(18, 93);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 16);
+            this.label3.Size = new System.Drawing.Size(116, 25);
             this.label3.TabIndex = 1;
             this.label3.Text = "Mã hóa đơn";
             // 
@@ -205,7 +216,7 @@ namespace BasicGroceryStore
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(18, 46);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 16);
+            this.label2.Size = new System.Drawing.Size(100, 25);
             this.label2.TabIndex = 0;
             this.label2.Text = "Nhân viên";
             // 
@@ -233,28 +244,30 @@ namespace BasicGroceryStore
             this.gbFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbFilter.Location = new System.Drawing.Point(3, 3);
             this.gbFilter.Name = "gbFilter";
-            this.gbFilter.Size = new System.Drawing.Size(697, 854);
+            this.gbFilter.Size = new System.Drawing.Size(527, 627);
             this.gbFilter.TabIndex = 5;
             this.gbFilter.TabStop = false;
             this.gbFilter.Text = "Lọc thông tin";
             // 
             // dgvProduct
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.MediumPurple;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.MediumPurple;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProduct.EnableHeadersVisualStyles = false;
             this.dgvProduct.Location = new System.Drawing.Point(15, 281);
             this.dgvProduct.Name = "dgvProduct";
             this.dgvProduct.ReadOnly = true;
-            this.dgvProduct.Size = new System.Drawing.Size(661, 483);
+            this.dgvProduct.RowHeadersWidth = 62;
+            this.dgvProduct.Size = new System.Drawing.Size(501, 238);
             this.dgvProduct.TabIndex = 34;
+            this.dgvProduct.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProduct_CellContentClick);
             this.dgvProduct.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProduct_CellDoubleClick);
             // 
             // btnReload
@@ -269,9 +282,9 @@ namespace BasicGroceryStore
             // 
             // btnMakeNewProduct
             // 
-            this.btnMakeNewProduct.Location = new System.Drawing.Point(15, 770);
+            this.btnMakeNewProduct.Location = new System.Drawing.Point(6, 534);
             this.btnMakeNewProduct.Name = "btnMakeNewProduct";
-            this.btnMakeNewProduct.Size = new System.Drawing.Size(275, 36);
+            this.btnMakeNewProduct.Size = new System.Drawing.Size(220, 36);
             this.btnMakeNewProduct.TabIndex = 32;
             this.btnMakeNewProduct.Text = "Thêm sản phẩm mới";
             this.btnMakeNewProduct.UseVisualStyleBackColor = true;
@@ -280,9 +293,9 @@ namespace BasicGroceryStore
             // btnCheckSupplier
             // 
             this.btnCheckSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckSupplier.Location = new System.Drawing.Point(15, 812);
+            this.btnCheckSupplier.Location = new System.Drawing.Point(6, 591);
             this.btnCheckSupplier.Name = "btnCheckSupplier";
-            this.btnCheckSupplier.Size = new System.Drawing.Size(275, 36);
+            this.btnCheckSupplier.Size = new System.Drawing.Size(220, 36);
             this.btnCheckSupplier.TabIndex = 30;
             this.btnCheckSupplier.Text = "Thông tin các nhà cung cấp";
             this.btnCheckSupplier.UseVisualStyleBackColor = true;
@@ -290,7 +303,7 @@ namespace BasicGroceryStore
             // 
             // btnChooseProduct
             // 
-            this.btnChooseProduct.Location = new System.Drawing.Point(401, 770);
+            this.btnChooseProduct.Location = new System.Drawing.Point(235, 534);
             this.btnChooseProduct.Name = "btnChooseProduct";
             this.btnChooseProduct.Size = new System.Drawing.Size(275, 36);
             this.btnChooseProduct.TabIndex = 29;
@@ -300,7 +313,7 @@ namespace BasicGroceryStore
             // 
             // btnCheckHistory
             // 
-            this.btnCheckHistory.Location = new System.Drawing.Point(401, 812);
+            this.btnCheckHistory.Location = new System.Drawing.Point(235, 591);
             this.btnCheckHistory.Name = "btnCheckHistory";
             this.btnCheckHistory.Size = new System.Drawing.Size(275, 36);
             this.btnCheckHistory.TabIndex = 28;
@@ -310,9 +323,9 @@ namespace BasicGroceryStore
             // 
             // btnFind
             // 
-            this.btnFind.Location = new System.Drawing.Point(493, 239);
+            this.btnFind.Location = new System.Drawing.Point(365, 239);
             this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(183, 36);
+            this.btnFind.Size = new System.Drawing.Size(151, 36);
             this.btnFind.TabIndex = 27;
             this.btnFind.Text = "Tìm";
             this.btnFind.UseVisualStyleBackColor = true;
@@ -320,9 +333,9 @@ namespace BasicGroceryStore
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(304, 239);
+            this.btnClear.Location = new System.Drawing.Point(204, 239);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(183, 36);
+            this.btnClear.Size = new System.Drawing.Size(155, 36);
             this.btnClear.TabIndex = 26;
             this.btnClear.Text = "Làm trống";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -332,7 +345,7 @@ namespace BasicGroceryStore
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(331, 93);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 16);
+            this.label1.Size = new System.Drawing.Size(45, 25);
             this.label1.TabIndex = 25;
             this.label1.Text = "đến";
             // 
@@ -350,7 +363,7 @@ namespace BasicGroceryStore
             0,
             0});
             this.numUDTo.Name = "numUDTo";
-            this.numUDTo.Size = new System.Drawing.Size(107, 22);
+            this.numUDTo.Size = new System.Drawing.Size(107, 30);
             this.numUDTo.TabIndex = 24;
             this.numUDTo.Value = new decimal(new int[] {
             50,
@@ -372,7 +385,7 @@ namespace BasicGroceryStore
             0,
             0});
             this.numUDFrom.Name = "numUDFrom";
-            this.numUDFrom.Size = new System.Drawing.Size(107, 22);
+            this.numUDFrom.Size = new System.Drawing.Size(107, 30);
             this.numUDFrom.TabIndex = 23;
             this.numUDFrom.Value = new decimal(new int[] {
             1,
@@ -386,21 +399,21 @@ namespace BasicGroceryStore
             this.cbTypeProduct.FormattingEnabled = true;
             this.cbTypeProduct.Location = new System.Drawing.Point(201, 187);
             this.cbTypeProduct.Name = "cbTypeProduct";
-            this.cbTypeProduct.Size = new System.Drawing.Size(475, 24);
+            this.cbTypeProduct.Size = new System.Drawing.Size(315, 33);
             this.cbTypeProduct.TabIndex = 22;
             // 
             // txtSupplierFilter
             // 
             this.txtSupplierFilter.Location = new System.Drawing.Point(201, 139);
             this.txtSupplierFilter.Name = "txtSupplierFilter";
-            this.txtSupplierFilter.Size = new System.Drawing.Size(475, 22);
+            this.txtSupplierFilter.Size = new System.Drawing.Size(315, 30);
             this.txtSupplierFilter.TabIndex = 21;
             // 
             // txtNameFilter
             // 
             this.txtNameFilter.Location = new System.Drawing.Point(201, 43);
             this.txtNameFilter.Name = "txtNameFilter";
-            this.txtNameFilter.Size = new System.Drawing.Size(475, 22);
+            this.txtNameFilter.Size = new System.Drawing.Size(315, 30);
             this.txtNameFilter.TabIndex = 20;
             // 
             // chbTypeProduct
@@ -410,7 +423,7 @@ namespace BasicGroceryStore
             this.chbTypeProduct.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chbTypeProduct.Location = new System.Drawing.Point(15, 189);
             this.chbTypeProduct.Name = "chbTypeProduct";
-            this.chbTypeProduct.Size = new System.Drawing.Size(115, 20);
+            this.chbTypeProduct.Size = new System.Drawing.Size(166, 29);
             this.chbTypeProduct.TabIndex = 19;
             this.chbTypeProduct.Text = "Loại sản phẩm";
             this.chbTypeProduct.UseVisualStyleBackColor = true;
@@ -422,7 +435,7 @@ namespace BasicGroceryStore
             this.chbSupplier.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chbSupplier.Location = new System.Drawing.Point(15, 141);
             this.chbSupplier.Name = "chbSupplier";
-            this.chbSupplier.Size = new System.Drawing.Size(104, 20);
+            this.chbSupplier.Size = new System.Drawing.Size(153, 29);
             this.chbSupplier.TabIndex = 18;
             this.chbSupplier.Text = "Nhà sản xuất";
             this.chbSupplier.UseVisualStyleBackColor = true;
@@ -434,7 +447,7 @@ namespace BasicGroceryStore
             this.chbPrice.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chbPrice.Location = new System.Drawing.Point(15, 93);
             this.chbPrice.Name = "chbPrice";
-            this.chbPrice.Size = new System.Drawing.Size(91, 20);
+            this.chbPrice.Size = new System.Drawing.Size(135, 29);
             this.chbPrice.TabIndex = 17;
             this.chbPrice.Text = "Giá (nghìn)";
             this.chbPrice.UseVisualStyleBackColor = true;
@@ -446,25 +459,14 @@ namespace BasicGroceryStore
             this.chbName.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chbName.Location = new System.Drawing.Point(15, 45);
             this.chbName.Name = "chbName";
-            this.chbName.Size = new System.Drawing.Size(113, 20);
+            this.chbName.Size = new System.Drawing.Size(164, 29);
             this.chbName.TabIndex = 16;
             this.chbName.Text = "Tên sản phẩm";
             this.chbName.UseVisualStyleBackColor = true;
             // 
-            // flowpnl_Item
-            // 
-            this.flowpnl_Item.AutoScroll = true;
-            this.flowpnl_Item.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.flowpnl_Item.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.flowpnl_Item.Location = new System.Drawing.Point(6, 21);
-            this.flowpnl_Item.Name = "flowpnl_Item";
-            this.flowpnl_Item.Size = new System.Drawing.Size(617, 540);
-            this.flowpnl_Item.TabIndex = 1;
-            this.toolTip.SetToolTip(this.flowpnl_Item, "Nhấn đúp chuột vào sản phẩm để thêm vào giỏ hàng");
-            // 
             // UCImported
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 33F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pnlMain);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

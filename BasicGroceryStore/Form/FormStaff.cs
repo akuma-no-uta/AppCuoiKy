@@ -34,6 +34,7 @@ namespace BasicGroceryStore
             txtCitizenID.Text = staff.CitizenID;
             txtEmail.Text = staff.Email;
             txtPhone.Text = staff.Phone;
+            enableBtn.Checked = staff.Enable == 1;
 
             picRepresent.Image = staff.Images;
 
@@ -124,6 +125,7 @@ namespace BasicGroceryStore
             staff.Phone = txtPhone.Text;
 
             staff.Images = picRepresent.Image;
+            staff.Enable = enableBtn.Checked ? 1 : 0;
 
             if (isValid(staff))
             {
@@ -162,6 +164,19 @@ namespace BasicGroceryStore
         private void cbTypeWork_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbSpells.Enabled = cbTypeWork.Text.Equals("parttime");
+        }
+
+        private void enableBtn_CheckedChanged(object sender, EventArgs e)
+        {
+        {
+                staff.Enable = enableBtn.Checked ? 1 : 0;
+
+            }
+        }
+
+        private void FormStaff_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

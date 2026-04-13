@@ -246,5 +246,10 @@ namespace BasicGroceryStore
             UCProductItem item = new UCProductItem(flowpnl_Item, txtTotalPrice, product_id, name, price);
             item.SettingItem();
         }
+
+        private void dgvProduct_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

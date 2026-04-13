@@ -9,7 +9,6 @@
         public string Staff_id { get => staff_id; set => staff_id = value; }
         public string Username { get => username; set => username = value; }
         public string Password { get => password; set => password = value; }
-
         public Account(string staff_id, string username, string password)
         {
             this.staff_id = staff_id;

@@ -56,8 +56,11 @@
     <Compile Include="BusinessLogicLayer\BUS_Ordered.cs" />
     <Compile Include="BusinessLogicLayer\BUS_Ordered_Item.cs" />
     <Compile Include="BusinessLogicLayer\BUS_Product.cs" />
+    <Compile Include="BusinessLogicLayer\BUS_Promotion.cs" />
     <Compile Include="BusinessLogicLayer\BUS_Staff.cs" />
     <Compile Include="BusinessLogicLayer\BUS_Supplier.cs" />
+    <Compile Include="DataAccessLayer\DAO_Promotion.cs" />
+    <Compile Include="DTO\Promotion.cs" />
     <Compile Include="Form\FormCustomer.cs">
       <SubType>Form</SubType>
     </Compile>

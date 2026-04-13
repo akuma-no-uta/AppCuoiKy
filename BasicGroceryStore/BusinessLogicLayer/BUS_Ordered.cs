@@ -52,7 +52,10 @@ namespace BasicGroceryStore
             double? value = dao.GetValueOfAllBills();
             return (value != null) ? value.Value : 0d;
         }
-
+        public bool CheckCustomerExists(string name, string phone)
+        {
+            return dao.CheckCustomerExists(name, phone);
+        }
         public double? GetValueOfAllBills_Day(DateTime date)
         {
             double? value = dao.GetValueOfAllBills_Day(date);

@@ -24,6 +24,7 @@ namespace BasicGroceryStore
         public string Phone { get => phone; set => phone = value; }
         public string Email { get => email; set => email = value; }
         public Image Images { get => images; set => images = value; }
+        public int Enable { get; internal set; }
 
         public Staff()
         {
@@ -52,6 +53,8 @@ namespace BasicGroceryStore
             this.phone = phone;
             this.email = email;
             this.images = images;
+            this.Enable = 1; 
+
         }
 
         public int getAge()

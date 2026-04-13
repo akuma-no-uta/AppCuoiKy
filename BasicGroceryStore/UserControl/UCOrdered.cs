@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BasicGroceryStore.BusinessLogicLayer;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
@@ -7,6 +8,7 @@ namespace BasicGroceryStore
 {
     public partial class UCOrdered : UserControl
     {
+        private BUS_Promotion busPromotion;
         private BUS_Product bus_product;
         private BUS_Ordered bus_order;
         private BUS_Ordered_Item bus_item;
@@ -29,7 +31,7 @@ namespace BasicGroceryStore
         public UCOrdered()
         {
             InitializeComponent();
-
+            busPromotion = new BUS_Promotion();
             bus_product = new BUS_Product();
             bus_order = new BUS_Ordered();
             bus_item = new BUS_Ordered_Item();
@@ -70,6 +72,7 @@ namespace BasicGroceryStore
             txtStaffName.Clear();
             txtTotalPrice.Clear();
             txtCustomerName.Clear();
+            txtSdt.Clear();   
 
             flowpnl_Item.Controls.Clear();
 
@@ -138,8 +141,34 @@ namespace BasicGroceryStore
                         else
                             _order.StaffID = "";
 
-                        _order.CustomerName = txtCustomerName.Text.Trim();
-                        _order.Value = float.Parse(txtTotalPrice.Text);
+                        string customerName = txtCustomerName.Text.Trim();
+                        string customerPhone = txtSdt.Text.Trim();
+
+                        // kiểm tra trống
+                        if (string.IsNullOrWhiteSpace(customerName) || string.IsNullOrWhiteSpace(customerPhone))
+                        {
+                            MessageBox.Show(
+                                "Vui lòng nhập tên khách hàng và số điện thoại!",
+                                "THÔNG BÁO",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning
+                            );
+                            return;
+                        }
+
+                        // kiểm tra khách hàng đã tồn tại theo tên + sđt
+                        if (bus_order.CheckCustomerExists(customerName, customerPhone))
+                        {
+                            MessageBox.Show(
+                                "Khách hàng này đã tồn tại!",
+                                "THÔNG BÁO",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information
+                            );
+                        }
+
+                        _order.CustomerName = customerName;
+                        _order.Value = float.Parse(txtTotalPrice.Text); _order.Value = float.Parse(txtTotalPrice.Text);
 
                         if (bus_order.Create(_order, _order.CustomerName))
                         {
@@ -246,8 +275,15 @@ namespace BasicGroceryStore
 
             string product_id = dgvProduct.CurrentRow.Cells[0].Value.ToString();
             string name = dgvProduct.CurrentRow.Cells[1].Value.ToString();
-            float price = float.Parse(dgvProduct.CurrentRow.Cells[6].Value.ToString());
+            float originalPrice = float.Parse(dgvProduct.CurrentRow.Cells[6].Value.ToString());
+            float price = originalPrice;
 
+            string category = dgvProduct.CurrentRow.Cells[2].Value.ToString();
+            // sửa index nếu cột loại sản phẩm khác
+
+            float discount = busPromotion.GetDiscountByCategory(category);
+
+            price = originalPrice - (originalPrice * discount / 100);
             UCProductItem item = new UCProductItem(flowpnl_Item, txtTotalPrice, product_id, name, price);
             if(store_quantity < 1)
             {
@@ -266,6 +302,151 @@ namespace BasicGroceryStore
                     item.SettingItem();
                 }
             }
+        }
+
+        private void gbFilter_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlMain_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void gbMakeBill_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gbListProduct_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtPickDateCreate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtStaffName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtBillID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTotalPrice_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCustomerName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowpnl_Item_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dgvProduct_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numUDTo_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numUDFrom_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbTypeProduct_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSupplierFilter_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNameFilter_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chbTypeProduct_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chbSupplier_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chbPrice_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chbName_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolTip_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

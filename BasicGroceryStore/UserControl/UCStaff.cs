@@ -29,7 +29,7 @@ namespace BasicGroceryStore
         public UCStaff()
         {
             InitializeComponent();
-
+        
             bus_staff = new BUS_Staff();
             bus_account = new BUS_Account();
             bus_contract = new BUS_Contract();
@@ -284,6 +284,11 @@ namespace BasicGroceryStore
             txtPassword.Text = acc.Password;
 
             dgvContracts.DataSource = bus_contract.GetAllContractOfStaff(_staff.ID);
+        }
+
+        private void gbFilter_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

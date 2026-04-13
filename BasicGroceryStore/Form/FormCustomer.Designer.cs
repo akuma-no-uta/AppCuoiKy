@@ -53,8 +53,9 @@ namespace BasicGroceryStore
             this.pnlMove.Controls.Add(this.lblTabShow);
             this.pnlMove.Controls.Add(this.btnMinimize);
             this.pnlMove.Location = new System.Drawing.Point(0, 0);
+            this.pnlMove.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlMove.Name = "pnlMove";
-            this.pnlMove.Size = new System.Drawing.Size(500, 40);
+            this.pnlMove.Size = new System.Drawing.Size(750, 62);
             this.pnlMove.TabIndex = 3;
             this.pnlMove.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlMove_MouseDown);
             this.pnlMove.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlMove_MouseMove);
@@ -65,18 +66,20 @@ namespace BasicGroceryStore
             this.lblTabShow.AutoSize = true;
             this.lblTabShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTabShow.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblTabShow.Location = new System.Drawing.Point(12, 7);
+            this.lblTabShow.Location = new System.Drawing.Point(18, 11);
+            this.lblTabShow.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTabShow.Name = "lblTabShow";
-            this.lblTabShow.Size = new System.Drawing.Size(214, 24);
+            this.lblTabShow.Size = new System.Drawing.Size(314, 33);
             this.lblTabShow.TabIndex = 4;
             this.lblTabShow.Text = "Thông tin khách hàng";
             // 
             // btnMinimize
             // 
             this.btnMinimize.Image = global::BasicGroceryStore.Properties.Resources.subtract_26px;
-            this.btnMinimize.Location = new System.Drawing.Point(430, 0);
+            this.btnMinimize.Location = new System.Drawing.Point(645, 0);
+            this.btnMinimize.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnMinimize.Name = "btnMinimize";
-            this.btnMinimize.Size = new System.Drawing.Size(58, 40);
+            this.btnMinimize.Size = new System.Drawing.Size(87, 62);
             this.btnMinimize.TabIndex = 3;
             this.btnMinimize.UseVisualStyleBackColor = true;
             this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
@@ -95,26 +98,29 @@ namespace BasicGroceryStore
             this.pnlMain.Controls.Add(this.lblCustomerDateJoin);
             this.pnlMain.Controls.Add(this.lblCustomerName);
             this.pnlMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlMain.Location = new System.Drawing.Point(0, 40);
+            this.pnlMain.Location = new System.Drawing.Point(0, 62);
+            this.pnlMain.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(500, 240);
+            this.pnlMain.Size = new System.Drawing.Size(750, 369);
             this.pnlMain.TabIndex = 4;
             // 
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(342, 196);
+            this.btnCancel.Location = new System.Drawing.Point(513, 302);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(146, 33);
+            this.btnCancel.Size = new System.Drawing.Size(219, 51);
             this.btnCancel.TabIndex = 54;
             this.btnCancel.Text = "Hủy";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(150, 196);
+            this.btnSave.Location = new System.Drawing.Point(225, 302);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(186, 33);
+            this.btnSave.Size = new System.Drawing.Size(279, 51);
             this.btnSave.TabIndex = 53;
             this.btnSave.Text = "Lưu thông tin";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -123,82 +129,92 @@ namespace BasicGroceryStore
             // dtPickDateJoin
             // 
             this.dtPickDateJoin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtPickDateJoin.Location = new System.Drawing.Point(150, 59);
+            this.dtPickDateJoin.Location = new System.Drawing.Point(225, 91);
+            this.dtPickDateJoin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtPickDateJoin.MaxDate = new System.DateTime(2100, 12, 31, 0, 0, 0, 0);
             this.dtPickDateJoin.MinDate = new System.DateTime(1980, 1, 1, 0, 0, 0, 0);
             this.dtPickDateJoin.Name = "dtPickDateJoin";
-            this.dtPickDateJoin.Size = new System.Drawing.Size(186, 26);
+            this.dtPickDateJoin.Size = new System.Drawing.Size(277, 35);
             this.dtPickDateJoin.TabIndex = 52;
             this.dtPickDateJoin.Value = new System.DateTime(2022, 8, 2, 0, 0, 0, 0);
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(150, 103);
+            this.txtPhone.Location = new System.Drawing.Point(225, 158);
+            this.txtPhone.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPhone.Mask = "0000-000-000";
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(187, 26);
+            this.txtPhone.Size = new System.Drawing.Size(278, 35);
             this.txtPhone.TabIndex = 51;
             // 
             // txtCustomerValue
             // 
-            this.txtCustomerValue.Location = new System.Drawing.Point(150, 147);
+            this.txtCustomerValue.Location = new System.Drawing.Point(225, 226);
+            this.txtCustomerValue.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtCustomerValue.Name = "txtCustomerValue";
-            this.txtCustomerValue.ReadOnly = true;
-            this.txtCustomerValue.Size = new System.Drawing.Size(338, 26);
+            this.txtCustomerValue.ReadOnly = false;
+            this.txtCustomerValue.Size = new System.Drawing.Size(505, 35);
             this.txtCustomerValue.TabIndex = 50;
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(150, 15);
+            this.txtName.Location = new System.Drawing.Point(225, 23);
+            this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtName.Name = "txtName";
-            this.txtName.ReadOnly = true;
-            this.txtName.Size = new System.Drawing.Size(338, 26);
+            this.txtName.ReadOnly = false;
+            this.txtName.Size = new System.Drawing.Size(505, 35);
             this.txtName.TabIndex = 49;
+            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // lblCustomerPhone
             // 
             this.lblCustomerPhone.AutoSize = true;
-            this.lblCustomerPhone.Location = new System.Drawing.Point(21, 107);
+            this.lblCustomerPhone.Location = new System.Drawing.Point(32, 165);
+            this.lblCustomerPhone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCustomerPhone.Name = "lblCustomerPhone";
-            this.lblCustomerPhone.Size = new System.Drawing.Size(81, 20);
+            this.lblCustomerPhone.Size = new System.Drawing.Size(121, 29);
             this.lblCustomerPhone.TabIndex = 48;
             this.lblCustomerPhone.Text = "Điện thoại";
             // 
             // lblCustomerValue
             // 
             this.lblCustomerValue.AutoSize = true;
-            this.lblCustomerValue.Location = new System.Drawing.Point(21, 150);
+            this.lblCustomerValue.Location = new System.Drawing.Point(32, 231);
+            this.lblCustomerValue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCustomerValue.Name = "lblCustomerValue";
-            this.lblCustomerValue.Size = new System.Drawing.Size(103, 20);
+            this.lblCustomerValue.Size = new System.Drawing.Size(155, 29);
             this.lblCustomerValue.TabIndex = 47;
             this.lblCustomerValue.Text = "Giá trị tích lũy";
             // 
             // lblCustomerDateJoin
             // 
             this.lblCustomerDateJoin.AutoSize = true;
-            this.lblCustomerDateJoin.Location = new System.Drawing.Point(21, 64);
+            this.lblCustomerDateJoin.Location = new System.Drawing.Point(32, 98);
+            this.lblCustomerDateJoin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCustomerDateJoin.Name = "lblCustomerDateJoin";
-            this.lblCustomerDateJoin.Size = new System.Drawing.Size(110, 20);
+            this.lblCustomerDateJoin.Size = new System.Drawing.Size(166, 29);
             this.lblCustomerDateJoin.TabIndex = 46;
             this.lblCustomerDateJoin.Text = "Ngày tham gia";
             // 
             // lblCustomerName
             // 
             this.lblCustomerName.AutoSize = true;
-            this.lblCustomerName.Location = new System.Drawing.Point(21, 21);
+            this.lblCustomerName.Location = new System.Drawing.Point(32, 32);
+            this.lblCustomerName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCustomerName.Name = "lblCustomerName";
-            this.lblCustomerName.Size = new System.Drawing.Size(57, 20);
+            this.lblCustomerName.Size = new System.Drawing.Size(83, 29);
             this.lblCustomerName.TabIndex = 45;
             this.lblCustomerName.Text = "Họ tên";
             // 
             // FormCustomer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(500, 280);
+            this.ClientSize = new System.Drawing.Size(750, 431);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlMove);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormCustomer";
             this.Text = "FormCustomer";
             this.pnlMove.ResumeLayout(false);

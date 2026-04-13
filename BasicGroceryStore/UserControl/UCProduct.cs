@@ -27,7 +27,7 @@ namespace BasicGroceryStore
         public UCProduct()
         {
             InitializeComponent();
-
+       
             bus_product = new BUS_Product();
             bus_supplier = new BUS_Supplier();
 
@@ -273,5 +273,40 @@ namespace BasicGroceryStore
         }
 
         #endregion
+
+        private void gbFilter_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gbSupplier_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gbFilter_Enter_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTypeProduct_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtUnit_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNote_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

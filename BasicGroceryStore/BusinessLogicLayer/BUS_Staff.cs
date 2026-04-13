@@ -1,87 +1,87 @@
-﻿using System;
-using System.Data;
+﻿    using System;
+    using System.Data;
 
-namespace BasicGroceryStore
-{
-    internal class BUS_Staff : IControl<Staff>, IStaffServices
+    namespace BasicGroceryStore
     {
-        private DAO_Staff dao;
-
-        public BUS_Staff()
+        internal class BUS_Staff : IControl<Staff>, IStaffServices
         {
-            dao = new DAO_Staff();
-        }
+            private DAO_Staff dao;
 
-        public bool Create(Staff staff)
-        {
-            return dao.Create(staff);
-        }
-
-        public bool Update(Staff staff)
-        {
-            return dao.Update(staff);
-        }
-
-        public bool Delete(Staff staff)
-        {
-            return dao.Delete(staff);
-        }
-
-        public Staff GetStaff(string id)
-        {
-            try
+            public BUS_Staff()
             {
-                return dao.GetStaff(id);
+                dao = new DAO_Staff();
             }
-            catch (Exception)
+
+            public bool Create(Staff staff)
             {
-                throw new Exception("Can not find this staff!");
+                return dao.Create(staff);
             }
-        }
 
-        public DataTable GetAllStaff()
-        {
-            return dao.GetAllStaff();
-        }
+            public bool Update(Staff staff)
+            {
+                return dao.Update(staff);
+            }
 
-        public int GetNumberOfStaff()
-        {
-            return dao.GetNumberOfStaff();
-        }
+            public bool Delete(Staff staff)
+            {
+                return dao.Delete(staff);
+            }
 
-        public DataTable FindStaffByAddress(string address)
-        {
-            return dao.FindStaffByAddress(address);
-        }
+            public Staff GetStaff(string id)
+            {
+                try
+                {
+                    return dao.GetStaff(id);
+                }
+                catch (Exception)
+                {
+                    throw new Exception("Can not find this staff!");
+                }
+            }
 
-        public DataTable FindStaffByName(string name)
-        {
-            return dao.FindStaffByName(name);
-        }
+            public DataTable GetAllStaff()
+            {
+                return dao.GetAllStaff();
+            }
 
-        public DataTable FindStaffByAgeRange(float from, float to)
-        {
-            return dao.FindStaffByAgeRange(from, to);
-        }
+            public int GetNumberOfStaff()
+            {
+                return dao.GetNumberOfStaff();
+            }
 
-        public DataTable FindStaffByContractStatus(string status)
-        {
-            return dao.FindStaffByContractStatus(status);
-        }
+            public DataTable FindStaffByAddress(string address)
+            {
+                return dao.FindStaffByAddress(address);
+            }
 
-        public DataTable FindStaffByGender(string gender)
-        {
-            return dao.FindStaffByGender(gender);
-        }
+            public DataTable FindStaffByName(string name)
+            {
+                return dao.FindStaffByName(name);
+            }
 
-        public DataTable FindStaffBySpells(string spells)
-        {
-            return dao.FindStaffBySpells(spells);
-        }
+            public DataTable FindStaffByAgeRange(float from, float to)
+            {
+                return dao.FindStaffByAgeRange(from, to);
+            }
 
-        public DataTable FindStaffByTypeWork(string typeWork)
-        {
-            return dao.FindStaffByTypeWork(typeWork);
+            public DataTable FindStaffByContractStatus(string status)
+            {
+                return dao.FindStaffByContractStatus(status);
+            }
+
+            public DataTable FindStaffByGender(string gender)
+            {
+                return dao.FindStaffByGender(gender);
+            }
+
+            public DataTable FindStaffBySpells(string spells)
+            {
+                return dao.FindStaffBySpells(spells);
+            }
+
+            public DataTable FindStaffByTypeWork(string typeWork)
+            {
+                return dao.FindStaffByTypeWork(typeWork);
+            }
         }
     }
-}

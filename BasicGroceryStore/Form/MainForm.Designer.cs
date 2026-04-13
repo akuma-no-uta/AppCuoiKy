@@ -62,16 +62,19 @@ namespace BasicGroceryStore
             this.pnlContainer.Controls.Add(this.pnlMove);
             this.pnlContainer.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlContainer.Location = new System.Drawing.Point(0, 0);
+            this.pnlContainer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlContainer.Name = "pnlContainer";
-            this.pnlContainer.Size = new System.Drawing.Size(1600, 900);
+            this.pnlContainer.Size = new System.Drawing.Size(2400, 1385);
             this.pnlContainer.TabIndex = 0;
             // 
             // pnlMain
             // 
-            this.pnlMain.Location = new System.Drawing.Point(250, 40);
+            this.pnlMain.Location = new System.Drawing.Point(375, 62);
+            this.pnlMain.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(1350, 860);
+            this.pnlMain.Size = new System.Drawing.Size(2025, 1323);
             this.pnlMain.TabIndex = 2;
+            this.pnlMain.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlMain_Paint);
             // 
             // pnlControl
             // 
@@ -87,33 +90,34 @@ namespace BasicGroceryStore
             this.pnlControl.Controls.Add(this.btnProduct);
             this.pnlControl.Controls.Add(this.btnHomePage);
             this.pnlControl.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.pnlControl.Location = new System.Drawing.Point(0, 40);
+            this.pnlControl.Location = new System.Drawing.Point(0, 62);
+            this.pnlControl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlControl.Name = "pnlControl";
-            this.pnlControl.Size = new System.Drawing.Size(250, 860);
+            this.pnlControl.Size = new System.Drawing.Size(375, 1323);
             this.pnlControl.TabIndex = 1;
             // 
             // btnCalendar
             // 
-            this.btnCalendar.Enabled = false;
-            this.btnCalendar.Image = global::BasicGroceryStore.Properties.Resources.icons8_Tear_Off_Calendar_32;
-            this.btnCalendar.Location = new System.Drawing.Point(3, 390);
+            this.btnCalendar.Image = ((System.Drawing.Image)(resources.GetObject("btnCalendar.Image")));
+            this.btnCalendar.Location = new System.Drawing.Point(4, 600);
+            this.btnCalendar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCalendar.Name = "btnCalendar";
-            this.btnCalendar.Size = new System.Drawing.Size(241, 53);
+            this.btnCalendar.Size = new System.Drawing.Size(362, 82);
             this.btnCalendar.TabIndex = 9;
-            this.btnCalendar.Text = "LỊCH BIỂU";
+            this.btnCalendar.Text = "VOUCHER";
             this.btnCalendar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCalendar.UseVisualStyleBackColor = true;
             this.btnCalendar.Click += new System.EventHandler(this.btnCalendar_Click);
             // 
             // btnBrowser
             // 
-            this.btnBrowser.Enabled = false;
-            this.btnBrowser.Image = global::BasicGroceryStore.Properties.Resources.icons8_mint_browser_32;
-            this.btnBrowser.Location = new System.Drawing.Point(3, 454);
+            this.btnBrowser.Image = ((System.Drawing.Image)(resources.GetObject("btnBrowser.Image")));
+            this.btnBrowser.Location = new System.Drawing.Point(4, 698);
+            this.btnBrowser.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnBrowser.Name = "btnBrowser";
-            this.btnBrowser.Size = new System.Drawing.Size(241, 53);
+            this.btnBrowser.Size = new System.Drawing.Size(362, 82);
             this.btnBrowser.TabIndex = 8;
-            this.btnBrowser.Text = "TRÌNH DUYỆT";
+            this.btnBrowser.Text = "KHÁCH HÀNG";
             this.btnBrowser.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBrowser.UseVisualStyleBackColor = true;
             this.btnBrowser.Click += new System.EventHandler(this.btnBrowser_Click);
@@ -121,23 +125,26 @@ namespace BasicGroceryStore
             // lblTime
             // 
             this.lblTime.AutoSize = true;
-            this.lblTime.Location = new System.Drawing.Point(12, 804);
+            this.lblTime.Location = new System.Drawing.Point(18, 1237);
+            this.lblTime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(0, 24);
+            this.lblTime.Size = new System.Drawing.Size(0, 33);
             this.lblTime.TabIndex = 7;
             // 
             // monthCalendar1
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(11, 633);
+            this.monthCalendar1.Location = new System.Drawing.Point(14, 857);
+            this.monthCalendar1.Margin = new System.Windows.Forms.Padding(14);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 6;
             // 
             // btnStaff
             // 
-            this.btnStaff.Image = global::BasicGroceryStore.Properties.Resources.icons8_staff_32;
-            this.btnStaff.Location = new System.Drawing.Point(3, 326);
+            this.btnStaff.Image = ((System.Drawing.Image)(resources.GetObject("btnStaff.Image")));
+            this.btnStaff.Location = new System.Drawing.Point(4, 502);
+            this.btnStaff.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnStaff.Name = "btnStaff";
-            this.btnStaff.Size = new System.Drawing.Size(241, 53);
+            this.btnStaff.Size = new System.Drawing.Size(362, 82);
             this.btnStaff.TabIndex = 5;
             this.btnStaff.Text = "NHÂN VIÊN";
             this.btnStaff.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -146,10 +153,11 @@ namespace BasicGroceryStore
             // 
             // btnStatistic
             // 
-            this.btnStatistic.Image = global::BasicGroceryStore.Properties.Resources.icons8_plot_32;
-            this.btnStatistic.Location = new System.Drawing.Point(3, 262);
+            this.btnStatistic.Image = ((System.Drawing.Image)(resources.GetObject("btnStatistic.Image")));
+            this.btnStatistic.Location = new System.Drawing.Point(4, 403);
+            this.btnStatistic.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnStatistic.Name = "btnStatistic";
-            this.btnStatistic.Size = new System.Drawing.Size(241, 53);
+            this.btnStatistic.Size = new System.Drawing.Size(362, 82);
             this.btnStatistic.TabIndex = 4;
             this.btnStatistic.Text = "THỐNG KÊ";
             this.btnStatistic.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -158,10 +166,11 @@ namespace BasicGroceryStore
             // 
             // btnImport
             // 
-            this.btnImport.Image = global::BasicGroceryStore.Properties.Resources.icons8_import_32;
-            this.btnImport.Location = new System.Drawing.Point(3, 198);
+            this.btnImport.Image = ((System.Drawing.Image)(resources.GetObject("btnImport.Image")));
+            this.btnImport.Location = new System.Drawing.Point(4, 305);
+            this.btnImport.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(241, 53);
+            this.btnImport.Size = new System.Drawing.Size(362, 82);
             this.btnImport.TabIndex = 3;
             this.btnImport.Text = "NHẬP HÀNG";
             this.btnImport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -170,10 +179,11 @@ namespace BasicGroceryStore
             // 
             // btnOrder
             // 
-            this.btnOrder.Image = global::BasicGroceryStore.Properties.Resources.icons8_purchase_order_32;
-            this.btnOrder.Location = new System.Drawing.Point(3, 134);
+            this.btnOrder.Image = ((System.Drawing.Image)(resources.GetObject("btnOrder.Image")));
+            this.btnOrder.Location = new System.Drawing.Point(4, 206);
+            this.btnOrder.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnOrder.Name = "btnOrder";
-            this.btnOrder.Size = new System.Drawing.Size(241, 53);
+            this.btnOrder.Size = new System.Drawing.Size(362, 82);
             this.btnOrder.TabIndex = 2;
             this.btnOrder.Text = "BÁN HÀNG";
             this.btnOrder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -182,10 +192,11 @@ namespace BasicGroceryStore
             // 
             // btnProduct
             // 
-            this.btnProduct.Image = global::BasicGroceryStore.Properties.Resources.icons8_product_32;
-            this.btnProduct.Location = new System.Drawing.Point(3, 70);
+            this.btnProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnProduct.Image")));
+            this.btnProduct.Location = new System.Drawing.Point(4, 108);
+            this.btnProduct.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnProduct.Name = "btnProduct";
-            this.btnProduct.Size = new System.Drawing.Size(241, 53);
+            this.btnProduct.Size = new System.Drawing.Size(362, 82);
             this.btnProduct.TabIndex = 1;
             this.btnProduct.Text = "SẢN PHẨM";
             this.btnProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -194,10 +205,11 @@ namespace BasicGroceryStore
             // 
             // btnHomePage
             // 
-            this.btnHomePage.Image = global::BasicGroceryStore.Properties.Resources.icons8_home_32;
-            this.btnHomePage.Location = new System.Drawing.Point(3, 6);
+            this.btnHomePage.Image = ((System.Drawing.Image)(resources.GetObject("btnHomePage.Image")));
+            this.btnHomePage.Location = new System.Drawing.Point(4, 9);
+            this.btnHomePage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnHomePage.Name = "btnHomePage";
-            this.btnHomePage.Size = new System.Drawing.Size(241, 53);
+            this.btnHomePage.Size = new System.Drawing.Size(362, 82);
             this.btnHomePage.TabIndex = 0;
             this.btnHomePage.Text = "TRANG CHỦ";
             this.btnHomePage.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -212,8 +224,9 @@ namespace BasicGroceryStore
             this.pnlMove.Controls.Add(this.btnMinimize);
             this.pnlMove.Controls.Add(this.btnClose);
             this.pnlMove.Location = new System.Drawing.Point(0, 0);
+            this.pnlMove.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlMove.Name = "pnlMove";
-            this.pnlMove.Size = new System.Drawing.Size(1600, 40);
+            this.pnlMove.Size = new System.Drawing.Size(2400, 62);
             this.pnlMove.TabIndex = 0;
             this.pnlMove.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlMove_MouseDown);
             this.pnlMove.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlMove_MouseMove);
@@ -223,9 +236,10 @@ namespace BasicGroceryStore
             // 
             this.cbSetting.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSetting.FormattingEnabled = true;
-            this.cbSetting.Location = new System.Drawing.Point(1253, 4);
+            this.cbSetting.Location = new System.Drawing.Point(1514, 8);
+            this.cbSetting.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbSetting.Name = "cbSetting";
-            this.cbSetting.Size = new System.Drawing.Size(216, 32);
+            this.cbSetting.Size = new System.Drawing.Size(322, 41);
             this.cbSetting.TabIndex = 3;
             this.cbSetting.SelectedIndexChanged += new System.EventHandler(this.cbSetting_SelectedIndexChanged);
             // 
@@ -233,28 +247,31 @@ namespace BasicGroceryStore
             // 
             this.lblTabShow.AutoSize = true;
             this.lblTabShow.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblTabShow.Location = new System.Drawing.Point(12, 7);
+            this.lblTabShow.Location = new System.Drawing.Point(18, 11);
+            this.lblTabShow.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTabShow.Name = "lblTabShow";
-            this.lblTabShow.Size = new System.Drawing.Size(187, 24);
+            this.lblTabShow.Size = new System.Drawing.Size(274, 33);
             this.lblTabShow.TabIndex = 2;
             this.lblTabShow.Text = "Tab đang hiển thị: ";
             // 
             // btnMinimize
             // 
-            this.btnMinimize.Image = global::BasicGroceryStore.Properties.Resources.subtract_26px;
-            this.btnMinimize.Location = new System.Drawing.Point(1475, 0);
+            this.btnMinimize.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimize.Image")));
+            this.btnMinimize.Location = new System.Drawing.Point(2212, 0);
+            this.btnMinimize.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnMinimize.Name = "btnMinimize";
-            this.btnMinimize.Size = new System.Drawing.Size(58, 40);
+            this.btnMinimize.Size = new System.Drawing.Size(87, 62);
             this.btnMinimize.TabIndex = 1;
             this.btnMinimize.UseVisualStyleBackColor = true;
             this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
             // 
             // btnClose
             // 
-            this.btnClose.Image = global::BasicGroceryStore.Properties.Resources.Close_26px;
-            this.btnClose.Location = new System.Drawing.Point(1539, 0);
+            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
+            this.btnClose.Location = new System.Drawing.Point(2308, 0);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(58, 40);
+            this.btnClose.Size = new System.Drawing.Size(87, 62);
             this.btnClose.TabIndex = 0;
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -265,12 +282,13 @@ namespace BasicGroceryStore
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1600, 900);
+            this.ClientSize = new System.Drawing.Size(1946, 1226);
             this.Controls.Add(this.pnlContainer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";

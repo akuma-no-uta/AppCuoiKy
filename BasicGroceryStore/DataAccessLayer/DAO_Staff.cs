@@ -34,7 +34,8 @@ namespace BasicGroceryStore
                      new SqlParameter("@Address", staff.Address),
                      new SqlParameter("@Phone", staff.Phone),
                      new SqlParameter("@Email", staff.Email),
-                     new SqlParameter("@Image", Convert.ImageToByteArray(staff.Images))) > 0) ? true : false;
+                     new SqlParameter("@Image", Convert.ImageToByteArray(staff.Images)),
+                     new SqlParameter("@Enable", staff.Enable)) > 0) ? true : false;
         }
 
         public bool Delete(Staff staff)
@@ -67,6 +68,8 @@ namespace BasicGroceryStore
                 phone: row[6].ToString(), 
                 email: row[7].ToString(), 
                 images: image);
+            staff.Enable = System.Convert.ToInt32(row["Enable"]);
+
             return staff;
         }
 

@@ -86,13 +86,11 @@ namespace BasicGroceryStore
 
             dao.UpdateInformation(new_data);
 
-            UCHomePage.Instance.LoadStoreInformation();
             this.Close();
         }
 
         private void FormStoreInfomation_FormClosed(object sender, FormClosedEventArgs e)
         {
-            UCHomePage.Instance.LoadStoreInformation();
         }
     }
 }

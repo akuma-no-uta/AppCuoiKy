@@ -151,12 +151,7 @@ namespace BasicGroceryStore
             DAO_Information dao = new DAO_Information("StoreInformation.xml");
             Dictionary<string, string> data = dao.LoadStoreInformation();
 
-            lblAddress.Text = "Địa chỉ: " + data["address"];
-            lblAddress.MaximumSize = new Size(560, 0);
-            lblAddress.AutoSize = true;
-
-            lblEmail.Text = "Email: " + data["email"];
-            lblPhone.Text = "Số điện thoại: " + data["phone"];
+            
 
             link.Clear();
             link.Add("map", data["link_map"]);
@@ -204,7 +199,6 @@ namespace BasicGroceryStore
             txtCustomerPhone.Text = dgvCustomer.CurrentRow.Cells[1].Value.ToString();
             dtCustomerDateJoin.Value = (DateTime)dgvCustomer.CurrentRow.Cells[2].Value;
             txtCustomerValue.Text = dgvCustomer.CurrentRow.Cells[3].Value.ToString();
-            picCustomerLevel.BackgroundImage = LoadLevelCustomer(dgvCustomer.CurrentRow.Cells[4].Value.ToString());
         }
 
         public void LoadIncomeData()

@@ -65,27 +65,50 @@ namespace BasicGroceryStore
         {
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
+
             string staff_id = bus_account.CheckLogin(username, password);
 
             if (staff_id != "")
             {
+                Staff staff = bus_staff.GetStaff(staff_id);
+
+                // kiểm tra enable
+                if (staff.Enable == 0)
+                {
+                    MessageBox.Show(
+                        "Tài khoản này đã bị vô hiệu hóa!\nVui lòng liên hệ quản trị viên.",
+                        "THÔNG BÁO",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+
+                    txtPassword.Clear();
+                    txtPassword.Focus();
+
+                    return;
+                }
                 Account main_login = new Account(staff_id, username, password);
                 bus_account.SaveAccount(main_login, chbRemember.Checked);
 
-                MainForm.staff_using = bus_staff.GetStaff(staff_id);
+                MainForm.staff_using = staff;
                 UCHomePage.Instance.LoadStaffData(MainForm.staff_using);
+
                 this.Close();
-            } 
+            }
             else
             {
-                MessageBox.Show("Tài khoản không hợp lệ!\nVui lòng liên hệ với bên hỗ trợ hoặc tắt biểu mẫu này\nđể hoạt động ứng dụng bình thường!", "THÔNG BÁO", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(
+                    "Tài khoản không hợp lệ!\nVui lòng liên hệ với bên hỗ trợ hoặc tắt biểu mẫu này\nđể hoạt động ứng dụng bình thường!",
+                    "THÔNG BÁO",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
             }
         }
 
         private void btnSupport_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Chưa có thông tin!", "THÔNG BÁO HỖ TRỢ", MessageBoxButtons.OK);
+            MessageBox.Show("Liên hệ Admin để được hỗ trợ thêm", "THÔNG BÁO HỖ TRỢ", MessageBoxButtons.OK);
         }
     }
 }

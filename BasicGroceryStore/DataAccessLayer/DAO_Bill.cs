@@ -12,7 +12,17 @@ namespace BasicGroceryStore
         {
             this.typeBill = typeBill;
         }
+        public bool CheckCustomerExists(string name, string phone)
+        {
+            DataTable dt = DataProvider.Instance.ExecuteQuery(
+                "SELECT * FROM CustomerMember WHERE Name = @Name AND Phone = @Phone",
+                CommandType.Text,
+                new SqlParameter("@Name", name),
+                new SqlParameter("@Phone", phone)
+            );
 
+            return dt.Rows.Count > 0;
+        }
         public bool Create(Bill bill, string customerName)
         {
             List<SqlParameter> param = new List<SqlParameter>() {

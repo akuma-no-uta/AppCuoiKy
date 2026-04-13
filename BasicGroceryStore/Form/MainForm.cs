@@ -12,7 +12,7 @@ namespace BasicGroceryStore
         public MainForm()
         {
             InitializeComponent();
-
+            this.WindowState = FormWindowState.Maximized;
             // Setting menu
             cbSetting.DataSource = Enum.GetValues(typeof(SettingControl));
 
@@ -65,6 +65,8 @@ namespace BasicGroceryStore
             pnlMain.Controls.Add(UCProduct.Instance);
             pnlMain.Controls.Add(UCStatistic.Instance);
             pnlMain.Controls.Add(UCStaff.Instance);
+            pnlMain.Controls.Add(UCCalendar.Instance);
+
             //pnlMain.Controls.Add(UCBrowser.Instance);
             //pnlMain.Controls.Add(UCCalendar.Instance);
 
@@ -131,14 +133,14 @@ namespace BasicGroceryStore
 
         private void btnBrowser_Click(object sender, EventArgs e)
         {
-            //ShowTabUsing(btnBrowser.Text);
-            //UCBrowser.Instance.BringToFront();
+            ShowTabUsing(btnBrowser.Text);
+            UCBrowser.Instance.BringToFront();
         }
 
         private void btnCalendar_Click(object sender, EventArgs e)
         {
-            //ShowTabUsing(btnCalendar.Text);
-            //UCCalendar.Instance.BringToFront();
+           ShowTabUsing(btnCalendar.Text);
+            UCCalendar.Instance.BringToFront();
         }
         #endregion
 
@@ -184,7 +186,7 @@ namespace BasicGroceryStore
                     }
                 case SettingControl.INFORMATION:
                     {
-                        MessageBox.Show(@"Ứng dụng này là dự án cá nhân nhỏ của Võ Nhật Phi!\nMọi thông tin muốn tìm hiểu thêm vui lòng liên hệ 0947679570!");
+                        MessageBox.Show(@"");
                         break;
                     }
                 case SettingControl.EXIT:
@@ -197,6 +199,11 @@ namespace BasicGroceryStore
                         break;
                     }
             }
+        }
+
+        private void pnlMain_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
