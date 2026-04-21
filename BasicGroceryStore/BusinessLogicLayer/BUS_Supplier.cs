@@ -12,6 +12,10 @@ namespace BasicGroceryStore
         {
             dao = new DAO_Supplier();
         }
+        public string GetSupplierIDByName(string name)
+        {
+            return dao.GetSupplierIDByName(name);
+        }
 
         public bool Create(Supplier supplier)
         {

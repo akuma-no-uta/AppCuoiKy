@@ -30,7 +30,10 @@ namespace BasicGroceryStore
         {
             return dao.CheckLogin(username, password);
         }
-
+        public Account CheckLoginWithRole(string username, string password)
+        {
+            return dao.CheckLoginWithRole(username, password);
+        }
         public Account GetAccountByStaffID(string staff_id)
         {
             return dao.GetAccountByStaffID(staff_id);

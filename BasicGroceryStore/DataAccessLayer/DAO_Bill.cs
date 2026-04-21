@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 
 namespace BasicGroceryStore
 {
@@ -116,7 +117,31 @@ namespace BasicGroceryStore
                 return (value.ToString() == "") ? null : (double?)value;
             }
         }
+        public Dictionary<string, int> GetTopSellingProducts()
+        {
+            Dictionary<string, int> result = new Dictionary<string, int>();
 
+            string query = @"
+                SELECT TOP 10
+                    p.Name,
+                    SUM(od.Quantity) AS TotalSold
+                FROM OrderedDetail od
+                INNER JOIN Product p ON od.ProductID = p.ID
+                GROUP BY p.Name
+                ORDER BY SUM(od.Quantity) DESC";
+
+            DataTable dt = DataProvider.Instance.ExecuteQuery(query,CommandType.Text);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                string name = row["Name"].ToString();
+                int total = System.Convert.ToInt32(row["TotalSold"]);
+
+                result.Add(name, total);
+            }
+
+            return result;
+        }
         //public DataTable FindBillByDateRange(DateTime from, DateTime to)
         //{
         //    string dateFrom = AdditionalFunctions.getDateString(from);

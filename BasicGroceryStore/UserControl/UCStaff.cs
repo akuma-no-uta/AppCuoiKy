@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Data;
+using System.Drawing;
+using System.Drawing.Text;
 using System.Windows.Forms;
-
 namespace BasicGroceryStore
 {
     public partial class UCStaff : UserControl
     {
+        private PrivateFontCollection pfc = new PrivateFontCollection();
+        private Font customFont;
         private BUS_Staff bus_staff;
         private BUS_Account bus_account;
         private BUS_Contract bus_contract;
@@ -42,6 +45,16 @@ namespace BasicGroceryStore
         private void LoadData()
         {
             ClearInformation();
+            string fontPath = "C:/Users/LENOVO/BasicGroceryStore/BasicGroceryStore/Futura/SVN-Futura Book.ttf";
+            pfc.AddFontFile(fontPath);
+
+            if (pfc.Families.Length > 0)
+                customFont = new Font(pfc.Families[0], 11F);
+            else
+                customFont = this.Font;
+
+            this.Font = customFont;
+            ApplyFont(this, customFont);
             dgvStaff.Controls.Clear();
 
             dgvStaff.DataSource = bus_staff.GetAllStaff();
@@ -229,7 +242,77 @@ namespace BasicGroceryStore
 
         private void btnChangePassword_Click(object sender, EventArgs e)
         {
+            // ❗ chưa chọn nhân viên
+            if (_staff == null || string.IsNullOrEmpty(_staff.ID))
+            {
+                MessageBox.Show("Vui lòng chọn nhân viên!",
+                    "THÔNG BÁO",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
 
+            // ❗ check quyền (chỉ admin hoặc chính mình)
+            if (MainForm.current_role != 1 && _staff.ID != MainForm.staff_using.ID)
+            {
+                MessageBox.Show("Bạn không có quyền đổi mật khẩu!",
+                    "CẢNH BÁO",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            Account acc = bus_account.GetAccountByStaffID(_staff.ID);
+            if (acc == null)
+            {
+                MessageBox.Show("Nhân viên chưa có tài khoản!",
+                    "LỖI",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
+
+            // 🔥 gọi input tự tạo
+            string newPassword = ShowInputPassword("ĐỔI MẬT KHẨU");
+
+            // ❗ validate
+            if (string.IsNullOrWhiteSpace(newPassword))
+            {
+                MessageBox.Show("Mật khẩu không được để trống!",
+                    "LỖI",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (newPassword.Length < 4)
+            {
+                MessageBox.Show("Mật khẩu phải >= 4 ký tự!",
+                    "LỖI",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 🔥 update
+            acc.Password = newPassword;
+
+            if (bus_account.Update(acc))
+            {
+                MessageBox.Show("Đổi mật khẩu thành công!",
+                    "THÔNG BÁO",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                txtPassword.Text = newPassword;
+            }
+            else
+            {
+                MessageBox.Show("Đổi mật khẩu thất bại!",
+                    "LỖI",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
 
         private void btnEditStaffInfor_Click(object sender, EventArgs e)
@@ -285,8 +368,75 @@ namespace BasicGroceryStore
 
             dgvContracts.DataSource = bus_contract.GetAllContractOfStaff(_staff.ID);
         }
+        private void ApplyFont(Control parent, Font font)
+        {
+            foreach (Control c in parent.Controls)
+            {
+                c.Font = font;
+                if (c.HasChildren)
+                    ApplyFont(c, font);
+            }
+        }
 
-        private void gbFilter_Enter(object sender, EventArgs e)
+        private void cbDateContract_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numUDTo_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+        private string ShowInputPassword(string title)
+        {
+            Form f = new Form();
+            f.Width = 300;
+            f.Height = 150;
+            f.Text = title;
+            f.StartPosition = FormStartPosition.CenterParent;
+            f.FormBorderStyle = FormBorderStyle.FixedDialog;
+
+            Label lbl = new Label() { Left = 10, Top = 10, Text = "Nhập mật khẩu mới:" };
+            TextBox txt = new TextBox()
+            {
+                Left = 10,
+                Top = 35,
+                Width = 260,
+                PasswordChar = '*'
+            };
+
+            Button btnOk = new Button() { Text = "OK", Left = 50, Width = 80, Top = 70 };
+            Button btnCancel = new Button() { Text = "Hủy", Left = 150, Width = 80, Top = 70 };
+
+            string result = "";
+
+            btnOk.Click += (sender, e) =>
+            {
+                result = txt.Text;
+                f.Close();
+            };
+
+            btnCancel.Click += (sender, e) =>
+            {
+                result = "";
+                f.Close();
+            };
+
+            f.Controls.Add(lbl);
+            f.Controls.Add(txt);
+            f.Controls.Add(btnOk);
+            f.Controls.Add(btnCancel);
+
+            f.ShowDialog();
+
+            return result;
+        }
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

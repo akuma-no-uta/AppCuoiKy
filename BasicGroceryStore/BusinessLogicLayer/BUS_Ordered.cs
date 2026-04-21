@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace BasicGroceryStore
@@ -66,6 +67,10 @@ namespace BasicGroceryStore
         {
             double? value = dao.GetValueOfAllBills_Month(date);
             return (value != null) ? value.Value : 0d;
+        }
+        public Dictionary<string, int> GetTopSellingProducts()
+        {
+            return dao.GetTopSellingProducts();
         }
     }
 }

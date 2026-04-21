@@ -15,7 +15,16 @@ namespace BasicGroceryStore
                 new SqlParameter("@Email", supplier.Email),
                 new SqlParameter("@Contact", supplier.Contact)) > 0) ? true : false;
         }
+        public string GetSupplierIDByName(string name)
+        {
+            object result = DataProvider.Instance.ExecuteScalar(
+                "SELECT ID FROM Supplier WHERE Name = @name",
+                CommandType.Text,
+                new SqlParameter("@name", name)
+            );
 
+            return result == null ? null : result.ToString();
+        }
         public bool Update(Supplier supplier)
         {
             return (DataProvider.Instance.ExecuteNonQuery("sp_UpdateSupplier", CommandType.StoredProcedure,

@@ -8,7 +8,7 @@ namespace BasicGroceryStore
     {
         private BUS_Contract bus_contract;
         private BUS_Staff bus_staff;
-
+        private BUS_Account bus_account;
         private Staff staff = null;
 
         public FormStaff(Staff staff)
@@ -17,7 +17,7 @@ namespace BasicGroceryStore
 
             bus_contract = new BUS_Contract();
             bus_staff = new BUS_Staff();
-
+            bus_account = new BUS_Account();
             LoadContentCombobox();
             this.staff = staff;
 
@@ -175,6 +175,11 @@ namespace BasicGroceryStore
         }
 
         private void FormStaff_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
 
         }

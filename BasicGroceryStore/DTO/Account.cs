@@ -1,19 +1,27 @@
-﻿namespace BasicGroceryStore
+﻿using System.Data;
+
+namespace BasicGroceryStore
 {
     public class Account
     {
         private string staff_id;
         private string username;
         private string password;
+        public int role;
+
+
 
         public string Staff_id { get => staff_id; set => staff_id = value; }
         public string Username { get => username; set => username = value; }
         public string Password { get => password; set => password = value; }
-        public Account(string staff_id, string username, string password)
+        public int Role { get => role; set => role = value; }
+        public Account(string staff_id, string username, string password, int role)
         {
             this.staff_id = staff_id;
             this.username = username;
             this.password = password;
+            this.Role = role;
+
         }
     }
 }

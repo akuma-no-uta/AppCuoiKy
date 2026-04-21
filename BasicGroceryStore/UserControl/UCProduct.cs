@@ -1,11 +1,18 @@
-﻿using System;
+﻿using ExcelDataReader;
+using System;
 using System.Data;
+using System.Drawing;
+using System.Drawing.Text;
+using System.IO;
 using System.Windows.Forms;
+using System.Text;
 
 namespace BasicGroceryStore
 {
     public partial class UCProduct : UserControl
     {
+        private PrivateFontCollection pfc = new PrivateFontCollection();
+        private Font customFont;
         private BUS_Product bus_product;
         private BUS_Supplier bus_supplier;
 
@@ -27,7 +34,18 @@ namespace BasicGroceryStore
         public UCProduct()
         {
             InitializeComponent();
-       
+
+            // ===================== FONT =====================
+            string fontPath = "C:/Users/LENOVO/BasicGroceryStore/BasicGroceryStore/Futura/SVN-Futura Book.ttf";
+            pfc.AddFontFile(fontPath);
+
+            if (pfc.Families.Length > 0)
+                customFont = new Font(pfc.Families[0], 11F);
+            else
+                customFont = this.Font;
+
+            this.Font = customFont;
+            ApplyFont(this, customFont);
             bus_product = new BUS_Product();
             bus_supplier = new BUS_Supplier();
 
@@ -126,6 +144,15 @@ namespace BasicGroceryStore
         private void btnSeeMoreSupplier_Click(object sender, EventArgs e)
         {
             new FormSupplierSynthetic().ShowDialog();
+        }
+        private void ApplyFont(Control parent, Font font)
+        {
+            foreach (Control c in parent.Controls)
+            {
+                c.Font = font;
+                if (c.HasChildren)
+                    ApplyFont(c, font);
+            }
         }
 
         private void btnLoadSupplier_Click(object sender, EventArgs e)
@@ -308,5 +335,106 @@ namespace BasicGroceryStore
         {
 
         }
+
+        private void dgvProduct_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void gbDetail_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Excel Files|*.xls;*.xlsx";
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+
+                    using (var stream = File.Open(ofd.FileName, FileMode.Open, FileAccess.Read))
+                    using (var reader = ExcelReaderFactory.CreateReader(stream))
+                    {
+                        var result = reader.AsDataSet();
+                        DataTable table = result.Tables[0];
+
+                        int successCount = 0;
+                        int failCount = 0;
+
+                        // 🔥 Supplier mặc định (bắt buộc phải tồn tại trong DB)
+                        string defaultSupplierID = bus_supplier.GetSupplierIDByName("Vinamilk");
+
+                        // 🔥 ảnh mặc định (tránh null)
+                        Bitmap defaultImage = new Bitmap(1, 1);
+
+                        for (int i = 1; i < table.Rows.Count; i++)
+                        {
+                            try
+                            {
+                                DataRow row = table.Rows[i];
+
+                                string supplierID = defaultSupplierID;
+
+                                // nếu có cột Supplier thì override
+                                if (table.Columns.Count > 6)
+                                {
+                                    string supplierName = row[6].ToString().Trim();
+
+                                    string foundID = bus_supplier.GetSupplierIDByName(supplierName);
+
+                                    if (!string.IsNullOrEmpty(foundID))
+                                        supplierID = foundID;
+                                }
+
+                                Product p = new Product()
+                                {
+                                    ID = Guid.NewGuid().ToString(),
+
+                                    Name = row[0].ToString(),
+                                    TypeProduct = row[1].ToString(),
+                                    Unit = row[2].ToString(),
+
+                                    Quantity = int.TryParse(row[3].ToString(), out int q) ? q : 0,
+                                    Price = float.TryParse(row[4].ToString(), out float pr) ? pr : 0,
+
+                                    Note = row[5].ToString(),
+
+                                    SupplierID = supplierID,
+                                    Image = defaultImage // 🔥 KHÔNG BAO GIỜ NULL
+                                };
+
+                                bool success = bus_product.Create(p);
+
+                                if (success)
+                                    successCount++;
+                                else
+                                    failCount++;
+                            }
+                            catch
+                            {
+                                failCount++;
+                            }
+                        }
+
+                        MessageBox.Show(
+                            $"Import xong!\nThành công: {successCount}\nThất bại: {failCount}",
+                            "Kết quả"
+                        );
+                    }
+
+                    LoadData();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message);
+                }
+            }
+        }
     }
+   
 }

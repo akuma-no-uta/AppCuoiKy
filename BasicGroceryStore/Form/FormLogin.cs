@@ -1,19 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Windows.Forms;
 
 namespace BasicGroceryStore
 {
     public partial class FormLogin : Form
     {
+        private PrivateFontCollection pfc = new PrivateFontCollection();
+        private Font customFont;
+        public static int current_role = 0; // 1 = admin, 0 = staff
+
         private BUS_Account bus_account;
         private BUS_Staff bus_staff;
 
         public FormLogin()
         {
             InitializeComponent();
+            string fontPath = "C:/Users/LENOVO/BasicGroceryStore/BasicGroceryStore/Futura/SVN-Futura Book.ttf";
+    pfc.AddFontFile(fontPath);
 
+    customFont = new Font(pfc.Families[0], 11F);
+
+    // ===== APPLY TOÀN BỘ =====
+    this.Font = customFont;
+    ApplyFont(this, customFont);
             bus_account = new BUS_Account();
             bus_staff = new BUS_Staff();
             LoadAccount();
@@ -31,6 +43,16 @@ namespace BasicGroceryStore
         private void btnMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+        private void ApplyFont(Control parent, Font font)
+        {
+            foreach (Control c in parent.Controls)
+            {
+                c.Font = font;
+
+                if (c.HasChildren)
+                    ApplyFont(c, font);
+            }
         }
 
         #region MoveForm
@@ -66,49 +88,87 @@ namespace BasicGroceryStore
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
 
-            string staff_id = bus_account.CheckLogin(username, password);
+            Account loginResult = bus_account.CheckLoginWithRole(username, password);
 
-            if (staff_id != "")
-            {
-                Staff staff = bus_staff.GetStaff(staff_id);
-
-                // kiểm tra enable
-                if (staff.Enable == 0)
-                {
-                    MessageBox.Show(
-                        "Tài khoản này đã bị vô hiệu hóa!\nVui lòng liên hệ quản trị viên.",
-                        "THÔNG BÁO",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning
-                    );
-
-                    txtPassword.Clear();
-                    txtPassword.Focus();
-
-                    return;
-                }
-                Account main_login = new Account(staff_id, username, password);
-                bus_account.SaveAccount(main_login, chbRemember.Checked);
-
-                MainForm.staff_using = staff;
-                UCHomePage.Instance.LoadStaffData(MainForm.staff_using);
-
-                this.Close();
-            }
-            else
+            if (loginResult == null)
             {
                 MessageBox.Show(
-                    "Tài khoản không hợp lệ!\nVui lòng liên hệ với bên hỗ trợ hoặc tắt biểu mẫu này\nđể hoạt động ứng dụng bình thường!",
+                    "Sai tài khoản hoặc mật khẩu!",
+                    "LỖI",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            Staff staff = bus_staff.GetStaff(loginResult.Staff_id);
+
+            // ❗ Check enable (đúng chỗ)
+            if (staff.Enable == 0)
+            {
+                MessageBox.Show(
+                    "Tài khoản đã bị khóa!",
                     "THÔNG BÁO",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning
                 );
-            }
-        }
 
+                txtPassword.Clear();
+                txtPassword.Focus();
+                return;
+            }
+
+            // 🔥 Lưu account nếu remember
+            bus_account.SaveAccount(loginResult, chbRemember.Checked);
+
+            // 🔥 Truyền dữ liệu sang MainForm
+            MainForm.staff_using = staff;
+            MainForm.current_role = loginResult.Role; // 🔥 QUAN TRỌNG
+
+            // 🔥 Mở MainForm
+            MainForm main = new MainForm();
+            main.Show();
+
+            this.Hide();
+        }
         private void btnSupport_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Liên hệ Admin để được hỗ trợ thêm", "THÔNG BÁO HỖ TRỢ", MessageBoxButtons.OK);
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+
+            Application.Exit();
+
+
+        }
+        private void lblUsername_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormLogin_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtUsername_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+    
+        public void ApplyRole(int role)
+        {
+            if (role != 1)
+            {
+                this.Enabled = false;
+            }
+        }
+
+        private void lblTabShow_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

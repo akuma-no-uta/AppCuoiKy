@@ -29,17 +29,31 @@ namespace BasicGroceryStore
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCProduct));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.gbDetail = new System.Windows.Forms.GroupBox();
-            this.btnLoadSupplier = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.btnEditProduct = new System.Windows.Forms.Button();
+            this.btnLoadSupplier = new System.Windows.Forms.Button();
+            this.picRepresent = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtTypeProduct = new System.Windows.Forms.TextBox();
+            this.txtUnit = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtQuantity = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtPrice = new System.Windows.Forms.TextBox();
+            this.txtNote = new System.Windows.Forms.TextBox();
             this.gbSupplier = new System.Windows.Forms.GroupBox();
             this.btnSeeMoreSupplier = new System.Windows.Forms.Button();
-            this.btnEditSupplier = new System.Windows.Forms.Button();
             this.gbProductOfSupplier = new System.Windows.Forms.GroupBox();
             this.dgvProductOfSupplier = new System.Windows.Forms.DataGridView();
+            this.btnEditSupplier = new System.Windows.Forms.Button();
             this.txtSupplierPhone = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txtSupplierEmail = new System.Windows.Forms.TextBox();
@@ -50,51 +64,48 @@ namespace BasicGroceryStore
             this.label9 = new System.Windows.Forms.Label();
             this.txtSupplierID = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtNote = new System.Windows.Forms.TextBox();
-            this.txtPrice = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtQuantity = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtUnit = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtTypeProduct = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.picRepresent = new System.Windows.Forms.PictureBox();
             this.gbFilter = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvProduct = new System.Windows.Forms.DataGridView();
-            this.btnAddNew = new System.Windows.Forms.Button();
-            this.btnReload = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnFind = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.numUDTo = new System.Windows.Forms.NumericUpDown();
-            this.numUDFrom = new System.Windows.Forms.NumericUpDown();
-            this.cbTypeProduct = new System.Windows.Forms.ComboBox();
-            this.txtSupplierFilter = new System.Windows.Forms.TextBox();
-            this.txtNameFilter = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
             this.chbTypeProduct = new System.Windows.Forms.CheckBox();
-            this.chbSupplier = new System.Windows.Forms.CheckBox();
-            this.chbPrice = new System.Windows.Forms.CheckBox();
+            this.btnClear = new System.Windows.Forms.Button();
             this.chbName = new System.Windows.Forms.CheckBox();
+            this.chbPrice = new System.Windows.Forms.CheckBox();
+            this.chbSupplier = new System.Windows.Forms.CheckBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtNameFilter = new System.Windows.Forms.TextBox();
+            this.btnReload = new System.Windows.Forms.Button();
+            this.btnFind = new System.Windows.Forms.Button();
+            this.numUDFrom = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbTypeProduct = new System.Windows.Forms.ComboBox();
+            this.numUDTo = new System.Windows.Forms.NumericUpDown();
+            this.txtSupplierFilter = new System.Windows.Forms.TextBox();
+            this.btnAddNew = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.pnlMain.SuspendLayout();
             this.gbDetail.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picRepresent)).BeginInit();
             this.gbSupplier.SuspendLayout();
             this.gbProductOfSupplier.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductOfSupplier)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picRepresent)).BeginInit();
             this.gbFilter.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numUDTo)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUDFrom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUDTo)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMain
             // 
-            this.pnlMain.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.pnlMain.BackColor = System.Drawing.Color.Gainsboro;
             this.pnlMain.Controls.Add(this.gbDetail);
             this.pnlMain.Controls.Add(this.gbFilter);
             this.pnlMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -105,55 +116,183 @@ namespace BasicGroceryStore
             // 
             // gbDetail
             // 
-            this.gbDetail.BackColor = System.Drawing.Color.SpringGreen;
-            this.gbDetail.Controls.Add(this.btnLoadSupplier);
-            this.gbDetail.Controls.Add(this.btnEditProduct);
+            this.gbDetail.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.gbDetail.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbDetail.BackgroundImage")));
+            this.gbDetail.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.gbDetail.Controls.Add(this.panel3);
             this.gbDetail.Controls.Add(this.gbSupplier);
-            this.gbDetail.Controls.Add(this.label7);
-            this.gbDetail.Controls.Add(this.txtNote);
-            this.gbDetail.Controls.Add(this.txtPrice);
-            this.gbDetail.Controls.Add(this.label6);
-            this.gbDetail.Controls.Add(this.txtQuantity);
-            this.gbDetail.Controls.Add(this.label5);
-            this.gbDetail.Controls.Add(this.txtUnit);
-            this.gbDetail.Controls.Add(this.label4);
-            this.gbDetail.Controls.Add(this.txtTypeProduct);
-            this.gbDetail.Controls.Add(this.label3);
-            this.gbDetail.Controls.Add(this.txtName);
-            this.gbDetail.Controls.Add(this.label2);
-            this.gbDetail.Controls.Add(this.picRepresent);
+            this.gbDetail.Dock = System.Windows.Forms.DockStyle.Right;
             this.gbDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbDetail.Location = new System.Drawing.Point(519, 0);
+            this.gbDetail.Location = new System.Drawing.Point(619, 0);
             this.gbDetail.Name = "gbDetail";
-            this.gbDetail.Size = new System.Drawing.Size(804, 857);
+            this.gbDetail.Size = new System.Drawing.Size(731, 860);
             this.gbDetail.TabIndex = 3;
             this.gbDetail.TabStop = false;
             this.gbDetail.Text = "Thông tin sản phẩm và nhà cung cấp";
+            this.gbDetail.Enter += new System.EventHandler(this.gbDetail_Enter);
             // 
-            // btnLoadSupplier
+            // panel3
             // 
-            this.btnLoadSupplier.Location = new System.Drawing.Point(267, 315);
-            this.btnLoadSupplier.Name = "btnLoadSupplier";
-            this.btnLoadSupplier.Size = new System.Drawing.Size(226, 36);
-            this.btnLoadSupplier.TabIndex = 38;
-            this.btnLoadSupplier.Text = "Tải thông tin nhà cung cấp";
-            this.btnLoadSupplier.UseVisualStyleBackColor = true;
-            this.btnLoadSupplier.Click += new System.EventHandler(this.btnLoadSupplier_Click);
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.btnEditProduct);
+            this.panel3.Controls.Add(this.btnLoadSupplier);
+            this.panel3.Controls.Add(this.picRepresent);
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Controls.Add(this.txtName);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.txtTypeProduct);
+            this.panel3.Controls.Add(this.txtUnit);
+            this.panel3.Controls.Add(this.label5);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.txtQuantity);
+            this.panel3.Controls.Add(this.label6);
+            this.panel3.Controls.Add(this.txtPrice);
+            this.panel3.Controls.Add(this.txtNote);
+            this.panel3.Location = new System.Drawing.Point(13, 21);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(584, 330);
+            this.panel3.TabIndex = 32;
             // 
             // btnEditProduct
             // 
-            this.btnEditProduct.Location = new System.Drawing.Point(6, 315);
+            this.btnEditProduct.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnEditProduct.ForeColor = System.Drawing.Color.White;
+            this.btnEditProduct.Location = new System.Drawing.Point(7, 280);
             this.btnEditProduct.Name = "btnEditProduct";
-            this.btnEditProduct.Size = new System.Drawing.Size(255, 36);
+            this.btnEditProduct.Size = new System.Drawing.Size(189, 36);
             this.btnEditProduct.TabIndex = 32;
-            this.btnEditProduct.Text = "Chỉnh sửa thông tin sản phẩm";
-            this.btnEditProduct.UseVisualStyleBackColor = true;
+            this.btnEditProduct.Text = "Chỉnh sửa thông tin ";
+            this.btnEditProduct.UseVisualStyleBackColor = false;
             this.btnEditProduct.Click += new System.EventHandler(this.btnEditProduct_Click);
+            // 
+            // btnLoadSupplier
+            // 
+            this.btnLoadSupplier.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnLoadSupplier.ForeColor = System.Drawing.Color.White;
+            this.btnLoadSupplier.Location = new System.Drawing.Point(272, 280);
+            this.btnLoadSupplier.Name = "btnLoadSupplier";
+            this.btnLoadSupplier.Size = new System.Drawing.Size(205, 36);
+            this.btnLoadSupplier.TabIndex = 38;
+            this.btnLoadSupplier.Text = "Tải thông tin nhà cung cấp";
+            this.btnLoadSupplier.UseVisualStyleBackColor = false;
+            this.btnLoadSupplier.Click += new System.EventHandler(this.btnLoadSupplier_Click);
+            // 
+            // picRepresent
+            // 
+            this.picRepresent.BackColor = System.Drawing.Color.Linen;
+            this.picRepresent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picRepresent.Location = new System.Drawing.Point(8, 21);
+            this.picRepresent.Name = "picRepresent";
+            this.picRepresent.Size = new System.Drawing.Size(116, 137);
+            this.picRepresent.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picRepresent.TabIndex = 1;
+            this.picRepresent.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(132, 21);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(138, 25);
+            this.label2.TabIndex = 25;
+            this.label2.Text = "Tên sản phẩm";
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(269, 18);
+            this.txtName.Multiline = true;
+            this.txtName.Name = "txtName";
+            this.txtName.ReadOnly = true;
+            this.txtName.Size = new System.Drawing.Size(208, 28);
+            this.txtName.TabIndex = 26;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(130, 50);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(140, 25);
+            this.label3.TabIndex = 27;
+            this.label3.Text = "Loại sản phẩm";
+            // 
+            // txtTypeProduct
+            // 
+            this.txtTypeProduct.Location = new System.Drawing.Point(269, 52);
+            this.txtTypeProduct.Name = "txtTypeProduct";
+            this.txtTypeProduct.ReadOnly = true;
+            this.txtTypeProduct.Size = new System.Drawing.Size(208, 30);
+            this.txtTypeProduct.TabIndex = 28;
+            this.txtTypeProduct.TextChanged += new System.EventHandler(this.txtTypeProduct_TextChanged);
+            // 
+            // txtUnit
+            // 
+            this.txtUnit.Location = new System.Drawing.Point(269, 89);
+            this.txtUnit.Name = "txtUnit";
+            this.txtUnit.ReadOnly = true;
+            this.txtUnit.Size = new System.Drawing.Size(208, 30);
+            this.txtUnit.TabIndex = 30;
+            this.txtUnit.TextChanged += new System.EventHandler(this.txtUnit_TextChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(130, 131);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(127, 25);
+            this.label5.TabIndex = 31;
+            this.label5.Text = "Số lượng kho";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(132, 89);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(67, 25);
+            this.label4.TabIndex = 29;
+            this.label4.Text = "Đơn vị";
+            // 
+            // txtQuantity
+            // 
+            this.txtQuantity.Location = new System.Drawing.Point(270, 128);
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.ReadOnly = true;
+            this.txtQuantity.Size = new System.Drawing.Size(208, 30);
+            this.txtQuantity.TabIndex = 32;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 165);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(120, 25);
+            this.label6.TabIndex = 33;
+            this.label6.Text = "Giá niêm yết";
+            // 
+            // txtPrice
+            // 
+            this.txtPrice.Location = new System.Drawing.Point(135, 166);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.ReadOnly = true;
+            this.txtPrice.Size = new System.Drawing.Size(341, 30);
+            this.txtPrice.TabIndex = 34;
+            // 
+            // txtNote
+            // 
+            this.txtNote.Location = new System.Drawing.Point(12, 204);
+            this.txtNote.Multiline = true;
+            this.txtNote.Name = "txtNote";
+            this.txtNote.ReadOnly = true;
+            this.txtNote.Size = new System.Drawing.Size(466, 70);
+            this.txtNote.TabIndex = 35;
+            this.txtNote.Text = "Ghi chú";
+            this.txtNote.TextChanged += new System.EventHandler(this.txtNote_TextChanged);
             // 
             // gbSupplier
             // 
-            this.gbSupplier.BackColor = System.Drawing.Color.MediumSpringGreen;
+            this.gbSupplier.BackColor = System.Drawing.Color.White;
+            this.gbSupplier.Controls.Add(this.btnSeeMoreSupplier);
             this.gbSupplier.Controls.Add(this.gbProductOfSupplier);
+            this.gbSupplier.Controls.Add(this.btnEditSupplier);
             this.gbSupplier.Controls.Add(this.txtSupplierPhone);
             this.gbSupplier.Controls.Add(this.label12);
             this.gbSupplier.Controls.Add(this.txtSupplierEmail);
@@ -165,41 +304,29 @@ namespace BasicGroceryStore
             this.gbSupplier.Controls.Add(this.txtSupplierID);
             this.gbSupplier.Controls.Add(this.label8);
             this.gbSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbSupplier.Location = new System.Drawing.Point(6, 357);
+            this.gbSupplier.Location = new System.Drawing.Point(13, 357);
             this.gbSupplier.Name = "gbSupplier";
-            this.gbSupplier.Size = new System.Drawing.Size(622, 491);
+            this.gbSupplier.Size = new System.Drawing.Size(584, 387);
             this.gbSupplier.TabIndex = 37;
             this.gbSupplier.TabStop = false;
             this.gbSupplier.Text = "Thông tin về nhà cung cấp";
             // 
             // btnSeeMoreSupplier
             // 
-            this.btnSeeMoreSupplier.Location = new System.Drawing.Point(245, 124);
+            this.btnSeeMoreSupplier.Location = new System.Drawing.Point(429, 143);
             this.btnSeeMoreSupplier.Name = "btnSeeMoreSupplier";
-            this.btnSeeMoreSupplier.Size = new System.Drawing.Size(251, 44);
+            this.btnSeeMoreSupplier.Size = new System.Drawing.Size(137, 70);
             this.btnSeeMoreSupplier.TabIndex = 50;
             this.btnSeeMoreSupplier.Text = "Xem thêm nhà cung cấp khác";
             this.btnSeeMoreSupplier.UseVisualStyleBackColor = true;
             this.btnSeeMoreSupplier.Click += new System.EventHandler(this.btnSeeMoreSupplier_Click);
             // 
-            // btnEditSupplier
-            // 
-            this.btnEditSupplier.Location = new System.Drawing.Point(0, 124);
-            this.btnEditSupplier.Name = "btnEditSupplier";
-            this.btnEditSupplier.Size = new System.Drawing.Size(248, 44);
-            this.btnEditSupplier.TabIndex = 39;
-            this.btnEditSupplier.Text = "Điều chỉnh thông tin";
-            this.btnEditSupplier.UseVisualStyleBackColor = true;
-            this.btnEditSupplier.Click += new System.EventHandler(this.btnEditSupplier_Click);
-            // 
             // gbProductOfSupplier
             // 
-            this.gbProductOfSupplier.Controls.Add(this.btnSeeMoreSupplier);
-            this.gbProductOfSupplier.Controls.Add(this.btnEditSupplier);
             this.gbProductOfSupplier.Controls.Add(this.dgvProductOfSupplier);
-            this.gbProductOfSupplier.Location = new System.Drawing.Point(7, 223);
+            this.gbProductOfSupplier.Location = new System.Drawing.Point(6, 216);
             this.gbProductOfSupplier.Name = "gbProductOfSupplier";
-            this.gbProductOfSupplier.Size = new System.Drawing.Size(616, 220);
+            this.gbProductOfSupplier.Size = new System.Drawing.Size(566, 176);
             this.gbProductOfSupplier.TabIndex = 49;
             this.gbProductOfSupplier.TabStop = false;
             this.gbProductOfSupplier.Text = "Các sản phẩm đang cung cấp";
@@ -217,13 +344,23 @@ namespace BasicGroceryStore
             this.dgvProductOfSupplier.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProductOfSupplier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProductOfSupplier.EnableHeadersVisualStyles = false;
-            this.dgvProductOfSupplier.Location = new System.Drawing.Point(-4, 32);
+            this.dgvProductOfSupplier.Location = new System.Drawing.Point(12, 24);
             this.dgvProductOfSupplier.Name = "dgvProductOfSupplier";
             this.dgvProductOfSupplier.ReadOnly = true;
             this.dgvProductOfSupplier.RowHeadersWidth = 62;
-            this.dgvProductOfSupplier.Size = new System.Drawing.Size(500, 94);
+            this.dgvProductOfSupplier.Size = new System.Drawing.Size(548, 136);
             this.dgvProductOfSupplier.TabIndex = 0;
             this.dgvProductOfSupplier.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductOfSupplier_CellClick);
+            // 
+            // btnEditSupplier
+            // 
+            this.btnEditSupplier.Location = new System.Drawing.Point(428, 35);
+            this.btnEditSupplier.Name = "btnEditSupplier";
+            this.btnEditSupplier.Size = new System.Drawing.Size(144, 70);
+            this.btnEditSupplier.TabIndex = 39;
+            this.btnEditSupplier.Text = "Điều chỉnh thông tin";
+            this.btnEditSupplier.UseVisualStyleBackColor = true;
+            this.btnEditSupplier.Click += new System.EventHandler(this.btnEditSupplier_Click);
             // 
             // txtSupplierPhone
             // 
@@ -231,7 +368,7 @@ namespace BasicGroceryStore
             this.txtSupplierPhone.Location = new System.Drawing.Point(135, 175);
             this.txtSupplierPhone.Name = "txtSupplierPhone";
             this.txtSupplierPhone.ReadOnly = true;
-            this.txtSupplierPhone.Size = new System.Drawing.Size(290, 35);
+            this.txtSupplierPhone.Size = new System.Drawing.Size(269, 35);
             this.txtSupplierPhone.TabIndex = 48;
             // 
             // label12
@@ -249,7 +386,7 @@ namespace BasicGroceryStore
             this.txtSupplierEmail.Location = new System.Drawing.Point(136, 140);
             this.txtSupplierEmail.Name = "txtSupplierEmail";
             this.txtSupplierEmail.ReadOnly = true;
-            this.txtSupplierEmail.Size = new System.Drawing.Size(351, 35);
+            this.txtSupplierEmail.Size = new System.Drawing.Size(268, 35);
             this.txtSupplierEmail.TabIndex = 46;
             // 
             // label11
@@ -267,7 +404,7 @@ namespace BasicGroceryStore
             this.txtSupplierAddress.Location = new System.Drawing.Point(135, 105);
             this.txtSupplierAddress.Name = "txtSupplierAddress";
             this.txtSupplierAddress.ReadOnly = true;
-            this.txtSupplierAddress.Size = new System.Drawing.Size(352, 35);
+            this.txtSupplierAddress.Size = new System.Drawing.Size(269, 35);
             this.txtSupplierAddress.TabIndex = 44;
             // 
             // label10
@@ -285,7 +422,7 @@ namespace BasicGroceryStore
             this.txtSupplierName.Location = new System.Drawing.Point(136, 70);
             this.txtSupplierName.Name = "txtSupplierName";
             this.txtSupplierName.ReadOnly = true;
-            this.txtSupplierName.Size = new System.Drawing.Size(351, 35);
+            this.txtSupplierName.Size = new System.Drawing.Size(268, 35);
             this.txtSupplierName.TabIndex = 42;
             // 
             // label9
@@ -303,7 +440,7 @@ namespace BasicGroceryStore
             this.txtSupplierID.Location = new System.Drawing.Point(136, 35);
             this.txtSupplierID.Name = "txtSupplierID";
             this.txtSupplierID.ReadOnly = true;
-            this.txtSupplierID.Size = new System.Drawing.Size(290, 35);
+            this.txtSupplierID.Size = new System.Drawing.Size(268, 35);
             this.txtSupplierID.TabIndex = 40;
             // 
             // label8
@@ -315,158 +452,54 @@ namespace BasicGroceryStore
             this.label8.TabIndex = 39;
             this.label8.Text = "Mã định danh";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 239);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(79, 25);
-            this.label7.TabIndex = 36;
-            this.label7.Text = "Ghi chú";
-            // 
-            // txtNote
-            // 
-            this.txtNote.Location = new System.Drawing.Point(6, 239);
-            this.txtNote.Multiline = true;
-            this.txtNote.Name = "txtNote";
-            this.txtNote.ReadOnly = true;
-            this.txtNote.Size = new System.Drawing.Size(487, 70);
-            this.txtNote.TabIndex = 35;
-            this.txtNote.TextChanged += new System.EventHandler(this.txtNote_TextChanged);
-            // 
-            // txtPrice
-            // 
-            this.txtPrice.Location = new System.Drawing.Point(326, 202);
-            this.txtPrice.Name = "txtPrice";
-            this.txtPrice.ReadOnly = true;
-            this.txtPrice.Size = new System.Drawing.Size(167, 30);
-            this.txtPrice.TabIndex = 34;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(194, 204);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(120, 25);
-            this.label6.TabIndex = 33;
-            this.label6.Text = "Giá niêm yết";
-            // 
-            // txtQuantity
-            // 
-            this.txtQuantity.Location = new System.Drawing.Point(326, 164);
-            this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.ReadOnly = true;
-            this.txtQuantity.Size = new System.Drawing.Size(167, 30);
-            this.txtQuantity.TabIndex = 32;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(194, 167);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(127, 25);
-            this.label5.TabIndex = 31;
-            this.label5.Text = "Số lượng kho";
-            // 
-            // txtUnit
-            // 
-            this.txtUnit.Location = new System.Drawing.Point(326, 127);
-            this.txtUnit.Name = "txtUnit";
-            this.txtUnit.ReadOnly = true;
-            this.txtUnit.Size = new System.Drawing.Size(167, 30);
-            this.txtUnit.TabIndex = 30;
-            this.txtUnit.TextChanged += new System.EventHandler(this.txtUnit_TextChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(194, 130);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 25);
-            this.label4.TabIndex = 29;
-            this.label4.Text = "Đơn vị";
-            // 
-            // txtTypeProduct
-            // 
-            this.txtTypeProduct.Location = new System.Drawing.Point(326, 90);
-            this.txtTypeProduct.Name = "txtTypeProduct";
-            this.txtTypeProduct.ReadOnly = true;
-            this.txtTypeProduct.Size = new System.Drawing.Size(167, 30);
-            this.txtTypeProduct.TabIndex = 28;
-            this.txtTypeProduct.TextChanged += new System.EventHandler(this.txtTypeProduct_TextChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(194, 93);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(140, 25);
-            this.label3.TabIndex = 27;
-            this.label3.Text = "Loại sản phẩm";
-            // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(325, 33);
-            this.txtName.Multiline = true;
-            this.txtName.Name = "txtName";
-            this.txtName.ReadOnly = true;
-            this.txtName.Size = new System.Drawing.Size(168, 51);
-            this.txtName.TabIndex = 26;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(193, 36);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(138, 25);
-            this.label2.TabIndex = 25;
-            this.label2.Text = "Tên sản phẩm";
-            // 
-            // picRepresent
-            // 
-            this.picRepresent.BackColor = System.Drawing.Color.Linen;
-            this.picRepresent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picRepresent.Location = new System.Drawing.Point(6, 43);
-            this.picRepresent.Name = "picRepresent";
-            this.picRepresent.Size = new System.Drawing.Size(180, 180);
-            this.picRepresent.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picRepresent.TabIndex = 1;
-            this.picRepresent.TabStop = false;
-            // 
             // gbFilter
             // 
-            this.gbFilter.BackColor = System.Drawing.Color.SpringGreen;
-            this.gbFilter.Controls.Add(this.dgvProduct);
+            this.gbFilter.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.gbFilter.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbFilter.BackgroundImage")));
+            this.gbFilter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.gbFilter.Controls.Add(this.button1);
+            this.gbFilter.Controls.Add(this.groupBox1);
+            this.gbFilter.Controls.Add(this.panel2);
+            this.gbFilter.Controls.Add(this.panel1);
             this.gbFilter.Controls.Add(this.btnAddNew);
-            this.gbFilter.Controls.Add(this.btnReload);
             this.gbFilter.Controls.Add(this.btnDelete);
-            this.gbFilter.Controls.Add(this.btnFind);
-            this.gbFilter.Controls.Add(this.btnClear);
-            this.gbFilter.Controls.Add(this.label1);
-            this.gbFilter.Controls.Add(this.numUDTo);
-            this.gbFilter.Controls.Add(this.numUDFrom);
-            this.gbFilter.Controls.Add(this.cbTypeProduct);
-            this.gbFilter.Controls.Add(this.txtSupplierFilter);
-            this.gbFilter.Controls.Add(this.txtNameFilter);
-            this.gbFilter.Controls.Add(this.chbTypeProduct);
-            this.gbFilter.Controls.Add(this.chbSupplier);
-            this.gbFilter.Controls.Add(this.chbPrice);
-            this.gbFilter.Controls.Add(this.chbName);
-            this.gbFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbFilter.Location = new System.Drawing.Point(3, 3);
+            this.gbFilter.Dock = System.Windows.Forms.DockStyle.Left;
+            this.gbFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbFilter.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.gbFilter.Location = new System.Drawing.Point(0, 0);
             this.gbFilter.Name = "gbFilter";
-            this.gbFilter.Size = new System.Drawing.Size(519, 854);
+            this.gbFilter.Size = new System.Drawing.Size(620, 860);
             this.gbFilter.TabIndex = 2;
             this.gbFilter.TabStop = false;
-            this.gbFilter.Text = "Lọc thông tin";
+            this.gbFilter.Text = "Bộ lọc sản phẩm";
             this.gbFilter.Enter += new System.EventHandler(this.gbFilter_Enter_1);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(213, 709);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(183, 36);
+            this.button1.TabIndex = 35;
+            this.button1.Text = "Nhập file Excel";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dgvProduct);
+            this.groupBox1.Location = new System.Drawing.Point(6, 281);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(594, 422);
+            this.groupBox1.TabIndex = 34;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Danh sách sản phẩm";
             // 
             // dgvProduct
             // 
             this.dgvProduct.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Green;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -474,98 +507,163 @@ namespace BasicGroceryStore
             this.dgvProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProduct.EnableHeadersVisualStyles = false;
-            this.dgvProduct.Location = new System.Drawing.Point(15, 281);
+            this.dgvProduct.Location = new System.Drawing.Point(9, 29);
             this.dgvProduct.Name = "dgvProduct";
             this.dgvProduct.ReadOnly = true;
             this.dgvProduct.RowHeadersWidth = 62;
-            this.dgvProduct.Size = new System.Drawing.Size(495, 422);
+            this.dgvProduct.Size = new System.Drawing.Size(579, 387);
             this.dgvProduct.TabIndex = 31;
             this.dgvProduct.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProduct_CellClick);
+            this.dgvProduct.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProduct_CellContentClick);
             // 
-            // btnAddNew
+            // panel2
             // 
-            this.btnAddNew.Location = new System.Drawing.Point(15, 709);
-            this.btnAddNew.Name = "btnAddNew";
-            this.btnAddNew.Size = new System.Drawing.Size(183, 36);
-            this.btnAddNew.TabIndex = 30;
-            this.btnAddNew.Text = "Thêm mới";
-            this.btnAddNew.UseVisualStyleBackColor = true;
-            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.chbTypeProduct);
+            this.panel2.Controls.Add(this.btnClear);
+            this.panel2.Controls.Add(this.chbName);
+            this.panel2.Controls.Add(this.chbPrice);
+            this.panel2.Controls.Add(this.chbSupplier);
+            this.panel2.ForeColor = System.Drawing.Color.Black;
+            this.panel2.Location = new System.Drawing.Point(15, 29);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(227, 246);
+            this.panel2.TabIndex = 33;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(65, 2);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(96, 29);
+            this.label7.TabIndex = 27;
+            this.label7.Text = "Mục lọc";
+            // 
+            // chbTypeProduct
+            // 
+            this.chbTypeProduct.AutoSize = true;
+            this.chbTypeProduct.Checked = true;
+            this.chbTypeProduct.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chbTypeProduct.Location = new System.Drawing.Point(16, 166);
+            this.chbTypeProduct.Name = "chbTypeProduct";
+            this.chbTypeProduct.Size = new System.Drawing.Size(195, 33);
+            this.chbTypeProduct.TabIndex = 19;
+            this.chbTypeProduct.Text = "Loại sản phẩm";
+            this.chbTypeProduct.UseVisualStyleBackColor = true;
+            this.chbTypeProduct.CheckedChanged += new System.EventHandler(this.chbTypeProduct_CheckedChanged);
+            // 
+            // btnClear
+            // 
+            this.btnClear.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnClear.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnClear.Location = new System.Drawing.Point(36, 225);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(10, 12);
+            this.btnClear.TabIndex = 26;
+            this.btnClear.Text = "Làm trống";
+            this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // chbName
+            // 
+            this.chbName.AutoSize = true;
+            this.chbName.Checked = true;
+            this.chbName.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chbName.Location = new System.Drawing.Point(16, 52);
+            this.chbName.Name = "chbName";
+            this.chbName.Size = new System.Drawing.Size(192, 33);
+            this.chbName.TabIndex = 16;
+            this.chbName.Text = "Tên sản phẩm";
+            this.chbName.UseVisualStyleBackColor = true;
+            this.chbName.CheckedChanged += new System.EventHandler(this.chbName_CheckedChanged);
+            // 
+            // chbPrice
+            // 
+            this.chbPrice.AutoSize = true;
+            this.chbPrice.Checked = true;
+            this.chbPrice.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chbPrice.Location = new System.Drawing.Point(16, 88);
+            this.chbPrice.Name = "chbPrice";
+            this.chbPrice.Size = new System.Drawing.Size(157, 33);
+            this.chbPrice.TabIndex = 17;
+            this.chbPrice.Text = "Giá (nghìn)";
+            this.chbPrice.UseVisualStyleBackColor = true;
+            this.chbPrice.CheckedChanged += new System.EventHandler(this.chbPrice_CheckedChanged);
+            // 
+            // chbSupplier
+            // 
+            this.chbSupplier.AutoSize = true;
+            this.chbSupplier.Checked = true;
+            this.chbSupplier.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chbSupplier.Location = new System.Drawing.Point(16, 126);
+            this.chbSupplier.Name = "chbSupplier";
+            this.chbSupplier.Size = new System.Drawing.Size(176, 33);
+            this.chbSupplier.TabIndex = 18;
+            this.chbSupplier.Text = "Nhà sản xuất";
+            this.chbSupplier.UseVisualStyleBackColor = true;
+            this.chbSupplier.CheckedChanged += new System.EventHandler(this.chbSupplier_CheckedChanged);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.label13);
+            this.panel1.Controls.Add(this.txtNameFilter);
+            this.panel1.Controls.Add(this.btnReload);
+            this.panel1.Controls.Add(this.btnFind);
+            this.panel1.Controls.Add(this.numUDFrom);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.cbTypeProduct);
+            this.panel1.Controls.Add(this.numUDTo);
+            this.panel1.Controls.Add(this.txtSupplierFilter);
+            this.panel1.Location = new System.Drawing.Point(267, 29);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(333, 246);
+            this.panel1.TabIndex = 32;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(118, 2);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(153, 29);
+            this.label13.TabIndex = 28;
+            this.label13.Text = "Thông số lọc";
+            // 
+            // txtNameFilter
+            // 
+            this.txtNameFilter.Location = new System.Drawing.Point(10, 52);
+            this.txtNameFilter.Name = "txtNameFilter";
+            this.txtNameFilter.Size = new System.Drawing.Size(309, 35);
+            this.txtNameFilter.TabIndex = 20;
             // 
             // btnReload
             // 
-            this.btnReload.Location = new System.Drawing.Point(15, 239);
+            this.btnReload.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnReload.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnReload.Location = new System.Drawing.Point(10, 201);
             this.btnReload.Name = "btnReload";
             this.btnReload.Size = new System.Drawing.Size(135, 36);
             this.btnReload.TabIndex = 29;
             this.btnReload.Text = "Tải lại";
-            this.btnReload.UseVisualStyleBackColor = true;
+            this.btnReload.UseVisualStyleBackColor = false;
             this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(327, 709);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(183, 36);
-            this.btnDelete.TabIndex = 28;
-            this.btnDelete.Text = "Xóa thông tin";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnFind
             // 
-            this.btnFind.Location = new System.Drawing.Point(336, 239);
+            this.btnFind.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnFind.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnFind.Location = new System.Drawing.Point(173, 201);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(146, 36);
             this.btnFind.TabIndex = 27;
             this.btnFind.Text = "Tìm";
-            this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.UseVisualStyleBackColor = false;
             this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
-            // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(170, 239);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(156, 36);
-            this.btnClear.TabIndex = 26;
-            this.btnClear.Text = "Làm trống";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(331, 93);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 25);
-            this.label1.TabIndex = 25;
-            this.label1.Text = "đến";
-            // 
-            // numUDTo
-            // 
-            this.numUDTo.Location = new System.Drawing.Point(403, 91);
-            this.numUDTo.Maximum = new decimal(new int[] {
-            5000,
-            0,
-            0,
-            0});
-            this.numUDTo.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numUDTo.Name = "numUDTo";
-            this.numUDTo.Size = new System.Drawing.Size(107, 30);
-            this.numUDTo.TabIndex = 24;
-            this.numUDTo.Value = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
             // 
             // numUDFrom
             // 
-            this.numUDFrom.Location = new System.Drawing.Point(201, 91);
+            this.numUDFrom.Location = new System.Drawing.Point(10, 88);
             this.numUDFrom.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -577,7 +675,7 @@ namespace BasicGroceryStore
             0,
             0});
             this.numUDFrom.Name = "numUDFrom";
-            this.numUDFrom.Size = new System.Drawing.Size(107, 30);
+            this.numUDFrom.Size = new System.Drawing.Size(107, 35);
             this.numUDFrom.TabIndex = 23;
             this.numUDFrom.Value = new decimal(new int[] {
             1,
@@ -585,80 +683,72 @@ namespace BasicGroceryStore
             0,
             0});
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(136, 88);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 29);
+            this.label1.TabIndex = 25;
+            this.label1.Text = "đến";
+            // 
             // cbTypeProduct
             // 
             this.cbTypeProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTypeProduct.FormattingEnabled = true;
-            this.cbTypeProduct.Location = new System.Drawing.Point(201, 187);
+            this.cbTypeProduct.Location = new System.Drawing.Point(10, 162);
             this.cbTypeProduct.Name = "cbTypeProduct";
-            this.cbTypeProduct.Size = new System.Drawing.Size(309, 33);
+            this.cbTypeProduct.Size = new System.Drawing.Size(309, 37);
             this.cbTypeProduct.TabIndex = 22;
+            // 
+            // numUDTo
+            // 
+            this.numUDTo.Location = new System.Drawing.Point(212, 89);
+            this.numUDTo.Maximum = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            this.numUDTo.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numUDTo.Name = "numUDTo";
+            this.numUDTo.Size = new System.Drawing.Size(107, 35);
+            this.numUDTo.TabIndex = 24;
+            this.numUDTo.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
             // 
             // txtSupplierFilter
             // 
-            this.txtSupplierFilter.Location = new System.Drawing.Point(201, 139);
+            this.txtSupplierFilter.Location = new System.Drawing.Point(10, 124);
             this.txtSupplierFilter.Name = "txtSupplierFilter";
-            this.txtSupplierFilter.Size = new System.Drawing.Size(309, 30);
+            this.txtSupplierFilter.Size = new System.Drawing.Size(309, 35);
             this.txtSupplierFilter.TabIndex = 21;
             // 
-            // txtNameFilter
+            // btnAddNew
             // 
-            this.txtNameFilter.Location = new System.Drawing.Point(201, 45);
-            this.txtNameFilter.Name = "txtNameFilter";
-            this.txtNameFilter.Size = new System.Drawing.Size(309, 30);
-            this.txtNameFilter.TabIndex = 20;
+            this.btnAddNew.Location = new System.Drawing.Point(15, 709);
+            this.btnAddNew.Name = "btnAddNew";
+            this.btnAddNew.Size = new System.Drawing.Size(183, 36);
+            this.btnAddNew.TabIndex = 30;
+            this.btnAddNew.Text = "Thêm mới";
+            this.btnAddNew.UseVisualStyleBackColor = true;
+            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
             // 
-            // chbTypeProduct
+            // btnDelete
             // 
-            this.chbTypeProduct.AutoSize = true;
-            this.chbTypeProduct.Checked = true;
-            this.chbTypeProduct.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbTypeProduct.Location = new System.Drawing.Point(15, 189);
-            this.chbTypeProduct.Name = "chbTypeProduct";
-            this.chbTypeProduct.Size = new System.Drawing.Size(166, 29);
-            this.chbTypeProduct.TabIndex = 19;
-            this.chbTypeProduct.Text = "Loại sản phẩm";
-            this.chbTypeProduct.UseVisualStyleBackColor = true;
-            this.chbTypeProduct.CheckedChanged += new System.EventHandler(this.chbTypeProduct_CheckedChanged);
-            // 
-            // chbSupplier
-            // 
-            this.chbSupplier.AutoSize = true;
-            this.chbSupplier.Checked = true;
-            this.chbSupplier.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbSupplier.Location = new System.Drawing.Point(15, 141);
-            this.chbSupplier.Name = "chbSupplier";
-            this.chbSupplier.Size = new System.Drawing.Size(153, 29);
-            this.chbSupplier.TabIndex = 18;
-            this.chbSupplier.Text = "Nhà sản xuất";
-            this.chbSupplier.UseVisualStyleBackColor = true;
-            this.chbSupplier.CheckedChanged += new System.EventHandler(this.chbSupplier_CheckedChanged);
-            // 
-            // chbPrice
-            // 
-            this.chbPrice.AutoSize = true;
-            this.chbPrice.Checked = true;
-            this.chbPrice.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbPrice.Location = new System.Drawing.Point(15, 93);
-            this.chbPrice.Name = "chbPrice";
-            this.chbPrice.Size = new System.Drawing.Size(135, 29);
-            this.chbPrice.TabIndex = 17;
-            this.chbPrice.Text = "Giá (nghìn)";
-            this.chbPrice.UseVisualStyleBackColor = true;
-            this.chbPrice.CheckedChanged += new System.EventHandler(this.chbPrice_CheckedChanged);
-            // 
-            // chbName
-            // 
-            this.chbName.AutoSize = true;
-            this.chbName.Checked = true;
-            this.chbName.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbName.Location = new System.Drawing.Point(15, 45);
-            this.chbName.Name = "chbName";
-            this.chbName.Size = new System.Drawing.Size(164, 29);
-            this.chbName.TabIndex = 16;
-            this.chbName.Text = "Tên sản phẩm";
-            this.chbName.UseVisualStyleBackColor = true;
-            this.chbName.CheckedChanged += new System.EventHandler(this.chbName_CheckedChanged);
+            this.btnDelete.Location = new System.Drawing.Point(411, 709);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(183, 36);
+            this.btnDelete.TabIndex = 28;
+            this.btnDelete.Text = "Xóa thông tin";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // UCProduct
             // 
@@ -671,17 +761,22 @@ namespace BasicGroceryStore
             this.Size = new System.Drawing.Size(1350, 860);
             this.pnlMain.ResumeLayout(false);
             this.gbDetail.ResumeLayout(false);
-            this.gbDetail.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picRepresent)).EndInit();
             this.gbSupplier.ResumeLayout(false);
             this.gbSupplier.PerformLayout();
             this.gbProductOfSupplier.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductOfSupplier)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picRepresent)).EndInit();
             this.gbFilter.ResumeLayout(false);
-            this.gbFilter.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numUDTo)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUDFrom)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUDTo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -721,7 +816,6 @@ namespace BasicGroceryStore
         private System.Windows.Forms.Button btnLoadSupplier;
         private System.Windows.Forms.Button btnEditProduct;
         private System.Windows.Forms.GroupBox gbSupplier;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtNote;
         private System.Windows.Forms.Button btnSeeMoreSupplier;
         private System.Windows.Forms.Button btnEditSupplier;
@@ -737,5 +831,12 @@ namespace BasicGroceryStore
         private System.Windows.Forms.TextBox txtSupplierID;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView dgvProductOfSupplier;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label13;
     }
 }

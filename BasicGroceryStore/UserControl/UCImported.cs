@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
+using System.Drawing.Text;
 using System.Windows.Forms;
 
 namespace BasicGroceryStore
 {
     public partial class UCImported : UserControl
     {
+        private PrivateFontCollection pfc = new PrivateFontCollection();
+        private Font customFont;
         private BUS_Product bus_product;
         private BUS_Imported bus_imported;
         private BUS_Imported_Item bus_item;
@@ -30,10 +34,29 @@ namespace BasicGroceryStore
         public UCImported()
         {
             InitializeComponent();
+            string fontPath = "C:/Users/LENOVO/BasicGroceryStore/BasicGroceryStore/Futura/SVN-Futura Book.ttf";
+            pfc.AddFontFile(fontPath);
+
+            if (pfc.Families.Length > 0)
+                customFont = new Font(pfc.Families[0], 11F);
+            else
+                customFont = this.Font;
+
+            this.Font = customFont;
+            ApplyFont(this, customFont);
 
             bus_product = new BUS_Product();
             bus_imported = new BUS_Imported();
             bus_item = new BUS_Imported_Item();
+        }
+        private void ApplyFont(Control parent, Font font)
+        {
+            foreach (Control c in parent.Controls)
+            {
+                c.Font = font;
+                if (c.HasChildren)
+                    ApplyFont(c, font);
+            }
         }
 
         public void LoadData()
@@ -166,11 +189,7 @@ namespace BasicGroceryStore
             }
         }
 
-        private void btnChooseProduct_Click(object sender, EventArgs e)
-        {
-            
-        }
-
+   
         private void btnCheckHistory_Click(object sender, EventArgs e)
         {
             UCStatistic.Instance.BringToFront();
@@ -247,9 +266,6 @@ namespace BasicGroceryStore
             item.SettingItem();
         }
 
-        private void dgvProduct_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+      
     }
 }

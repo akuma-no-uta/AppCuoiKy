@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <DocumentElement>
   <Account>
-    <staff_id>2                   </staff_id>
-    <username>0947775582</username>
-    <password>123</password>
+    <staff_id>3                   </staff_id>
+    <username>admin</username>
+    <password>12345</password>
     <is_save>True</is_save>
   </Account>
 </DocumentElement>

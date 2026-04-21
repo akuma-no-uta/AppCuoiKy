@@ -2,12 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
+using System.Drawing.Text;
 using System.Windows.Forms;
 
 namespace BasicGroceryStore
 {
     public partial class UCOrdered : UserControl
     {
+        private PrivateFontCollection pfc = new PrivateFontCollection();
+        private Font customFont;
         private BUS_Promotion busPromotion;
         private BUS_Product bus_product;
         private BUS_Ordered bus_order;
@@ -31,6 +35,16 @@ namespace BasicGroceryStore
         public UCOrdered()
         {
             InitializeComponent();
+            string fontPath = "C:/Users/LENOVO/BasicGroceryStore/BasicGroceryStore/Futura/SVN-Futura Book.ttf";
+            pfc.AddFontFile(fontPath);
+
+            if (pfc.Families.Length > 0)
+                customFont = new Font(pfc.Families[0], 11F);
+            else
+                customFont = this.Font;
+
+            this.Font = customFont;
+            ApplyFont(this, customFont);
             busPromotion = new BUS_Promotion();
             bus_product = new BUS_Product();
             bus_order = new BUS_Ordered();
@@ -101,6 +115,15 @@ namespace BasicGroceryStore
                 }
             }
             return dataTable;
+        }
+        private void ApplyFont(Control parent, Font font)
+        {
+            foreach (Control c in parent.Controls)
+            {
+                c.Font = font;
+                if (c.HasChildren)
+                    ApplyFont(c, font);
+            }
         }
 
         private void btnReload_Click(object sender, EventArgs e)
@@ -445,6 +468,26 @@ namespace BasicGroceryStore
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtStaffName_TextChanged_1(object sender, EventArgs e)
         {
 
         }

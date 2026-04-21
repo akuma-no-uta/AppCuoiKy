@@ -1,11 +1,19 @@
 ﻿using System;
-
+using System.Drawing;
+using System.Drawing.Text;
 using System.Windows.Forms;
-
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Drawing;
+using System.Drawing.Text;
+using System.Windows.Forms;
 namespace BasicGroceryStore
 {
     public partial class UCStatistic : UserControl
     {
+        private PrivateFontCollection pfc = new PrivateFontCollection();
+        private Font customFont;
         private BUS_Imported bus_imported;
         private BUS_Ordered bus_ordered;
 
@@ -21,16 +29,26 @@ namespace BasicGroceryStore
                 return _obj;
             }
         }
+
         public UCStatistic()
         {
             InitializeComponent();
+            string fontPath = "C:/Users/LENOVO/BasicGroceryStore/BasicGroceryStore/Futura/SVN-Futura Book.ttf";
+            pfc.AddFontFile(fontPath);
 
+            if (pfc.Families.Length > 0)
+                customFont = new Font(pfc.Families[0], 11F);
+            else
+                customFont = this.Font;
+
+            this.Font = customFont;
+            ApplyFont(this, customFont);
             bus_imported = new BUS_Imported();
             bus_ordered = new BUS_Ordered();
 
             LoadData();
         }
-
+     
         private void LoadData()
         {
             dgvSellingHistory.Controls.Clear();
@@ -47,7 +65,15 @@ namespace BasicGroceryStore
             chbReportIncome.Enabled = chbReportIncome.Checked = !radReportToday.Checked;
             chbReportSpending.Enabled = chbReportSpending.Checked = !radReportToday.Checked;
         }
-
+        private void ApplyFont(Control parent, Font font)
+        {
+            foreach (Control c in parent.Controls)
+            {
+                c.Font = font;
+                if (c.HasChildren)
+                    ApplyFont(c, font);
+            }
+        }
         private void btnReloadSellingHistory_Click(object sender, EventArgs e)
         {
             dgvSellingHistory.Controls.Clear();

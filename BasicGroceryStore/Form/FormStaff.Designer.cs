@@ -65,8 +65,8 @@ namespace BasicGroceryStore
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.gbContract = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.enableBtn = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.pnlMove.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRepresent)).BeginInit();
             this.gbContract.SuspendLayout();
@@ -416,16 +416,6 @@ namespace BasicGroceryStore
             this.gbContract.TabStop = false;
             this.gbContract.Text = "Chi tiết hợp đồng hiện tại";
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(0, 0);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(184, 37);
-            this.checkBox1.TabIndex = 49;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
             // enableBtn
             // 
             this.enableBtn.AutoSize = true;
@@ -436,6 +426,17 @@ namespace BasicGroceryStore
             this.enableBtn.Text = "Kích hoạt";
             this.enableBtn.UseVisualStyleBackColor = true;
             this.enableBtn.CheckedChanged += new System.EventHandler(this.enableBtn_CheckedChanged);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(563, 174);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(124, 37);
+            this.checkBox1.TabIndex = 49;
+            this.checkBox1.Text = "Admin";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // FormStaff
             // 
