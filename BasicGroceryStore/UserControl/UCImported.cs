@@ -64,10 +64,14 @@ namespace BasicGroceryStore
             cbTypeProduct.DataSource = bus_product.GetAllTypeOfProduct();
 
             dgvProduct.Controls.Clear();
+            dgvProduct.DataSource = null;
+            dgvProduct.Columns.Clear();
             dgvProduct.DataSource = bus_product.GetAllProduct();
-            
 
-            dgvProduct.Columns[0].Visible = false; // Hide ID Column
+            // Ẩn các cột không cần hiển thị (kể cả 2 cột mới từ View)
+            foreach (string col in new[] { "ID", "Image", "Note", "SupplierID", "DiscountPercent", "SalePrice" })
+                if (dgvProduct.Columns.Contains(col))
+                    dgvProduct.Columns[col].Visible = false;
         }
 
         public void settingStaffInformation()
@@ -132,7 +136,7 @@ namespace BasicGroceryStore
 
         private void btnCancelBill_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Hủy toàn bộ phiếu nhập hàng?", "CẢNH BÁO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (MessageBox.Show("Hủy toàn bộ phiếu nhập hàng?", "CẢNH BÁO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 clearInformation();
         }
 
@@ -163,7 +167,10 @@ namespace BasicGroceryStore
                         else
                             _import.StaffID = "";
 
-                        _import.Value = float.Parse(txtTotalPrice.Text);
+                        _import.Value = txtTotalPrice.Tag != null
+                            ? (float)(double)txtTotalPrice.Tag
+                            : float.TryParse(txtTotalPrice.Text.Replace(",", "").Replace(" đ", "").Trim(),
+                                out float parsed) ? parsed : 0f;
 
                         if (bus_imported.Create(_import))
                         {
@@ -183,13 +190,13 @@ namespace BasicGroceryStore
 
                         clearInformation();
                         break;
-                    }                    
+                    }
                 default:
                     break;
             }
         }
 
-   
+
         private void btnCheckHistory_Click(object sender, EventArgs e)
         {
             UCStatistic.Instance.BringToFront();
@@ -244,28 +251,51 @@ namespace BasicGroceryStore
             }
 
             dgvProduct.Controls.Clear();
+            dgvProduct.DataSource = null;
+            dgvProduct.Columns.Clear();
             dgvProduct.DataSource = table;
+
+            foreach (string col in new[] { "ID", "Image", "Note", "SupplierID", "DiscountPercent", "SalePrice" })
+                if (dgvProduct.Columns.Contains(col))
+                    dgvProduct.Columns[col].Visible = false;
         }
 
         private void dgvProduct_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvProduct.CurrentCell.RowIndex == dgvProduct.RowCount - 1)
-                return;
+            if (e.RowIndex < 0 || e.RowIndex == dgvProduct.RowCount - 1) return;
 
             if (_import == null)
             {
                 _import = settingInformation();
+                _importedDetails = new List<Imported_Item>();
             }
-            _importedDetails = new List<Imported_Item>();
 
-            string product_id = dgvProduct.CurrentRow.Cells[0].Value.ToString();
-            string name = dgvProduct.CurrentRow.Cells[1].Value.ToString();
-            float price = float.Parse(dgvProduct.CurrentRow.Cells[6].Value.ToString());
+            DataGridViewRow currentRow = dgvProduct.CurrentRow;
+            if (currentRow == null) return;
+
+            string product_id = dgvProduct.Columns.Contains("ID")
+                ? currentRow.Cells["ID"].Value?.ToString().Trim() ?? ""
+                : currentRow.Cells[0].Value?.ToString().Trim() ?? "";
+
+            string name = dgvProduct.Columns.Contains("Name")
+                ? currentRow.Cells["Name"].Value?.ToString() ?? ""
+                : currentRow.Cells[1].Value?.ToString() ?? "";
+
+            // Đọc theo tên cột — không bị lệch dù View có thêm cột DiscountPercent/SalePrice
+            string priceStr = dgvProduct.Columns.Contains("Price")
+                ? currentRow.Cells["Price"].Value?.ToString()
+                : null;
+
+            if (!float.TryParse(priceStr, out float price))
+            {
+                MessageBox.Show("Không đọc được giá sản phẩm!", "LỖI",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             UCProductItem item = new UCProductItem(flowpnl_Item, txtTotalPrice, product_id, name, price);
             item.SettingItem();
         }
 
-      
     }
 }

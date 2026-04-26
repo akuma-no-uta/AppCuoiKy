@@ -164,5 +164,10 @@ namespace BasicGroceryStore
                 return false;
             return true;
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

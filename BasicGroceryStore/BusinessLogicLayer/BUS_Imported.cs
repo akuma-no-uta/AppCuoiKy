@@ -64,5 +64,27 @@ namespace BasicGroceryStore
             double? value = dao.GetValueOfAllBills_Month(date);
             return (value != null) ? value.Value : 0;
         }
+
+        // ══════════════════════════════════════════════
+        //  HÀM MỚI: Thống kê sản phẩm nhập theo khoảng ngày
+        // ══════════════════════════════════════════════
+
+        /// <summary>
+        /// Trả về DataTable: ItemName | TypeProduct | TotalQty | TotalPrice
+        /// Tổng hợp tất cả sản phẩm đã nhập trong khoảng [startDate, endDate]
+        /// </summary>
+        public DataTable GetImportedItemsByDateRange(DateTime startDate, DateTime endDate)
+        {
+            return dao.GetItemsSummaryByDateRange(startDate, endDate);
+        }
+
+        /// <summary>
+        /// Trả về DataTable: TypeProduct | TotalQty | TotalPrice
+        /// Nhóm theo loại sản phẩm trong khoảng [startDate, endDate]
+        /// </summary>
+        public DataTable GetImportedItemsByTypeAndDateRange(DateTime startDate, DateTime endDate)
+        {
+            return dao.GetItemsByTypeSummaryByDateRange(startDate, endDate);
+        }
     }
 }

@@ -94,7 +94,6 @@ namespace BasicGroceryStore
             // 
             // btnCalendar
             // 
-            this.btnCalendar.Enabled = true;
             this.btnCalendar.Image = global::BasicGroceryStore.Properties.Resources.icons8_Tear_Off_Calendar_32;
             this.btnCalendar.Location = new System.Drawing.Point(12, 402);
             this.btnCalendar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);

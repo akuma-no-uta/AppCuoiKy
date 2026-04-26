@@ -10,7 +10,7 @@ namespace BasicGroceryStore.DTO
     {
         public string ID { get; set; }
         public string PromotionName { get; set; }
-        public string Category { get; set; }
+        // Bỏ Category – không còn dùng nữa
         public float DiscountPercent { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }

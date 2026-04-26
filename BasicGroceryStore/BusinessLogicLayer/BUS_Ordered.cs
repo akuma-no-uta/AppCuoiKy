@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BasicGroceryStore.DataAccessLayer;
+using System;
 using System.Collections.Generic;
 using System.Data;
 
@@ -7,7 +8,7 @@ namespace BasicGroceryStore
     internal class BUS_Ordered : IBillServices
     {
         private DAO_Bill dao;
-
+        public DAO_Promotion daoPromotion;
         public BUS_Ordered()
         {
             dao = new DAO_Bill("Ordered");
@@ -72,5 +73,6 @@ namespace BasicGroceryStore
         {
             return dao.GetTopSellingProducts();
         }
+      
     }
 }

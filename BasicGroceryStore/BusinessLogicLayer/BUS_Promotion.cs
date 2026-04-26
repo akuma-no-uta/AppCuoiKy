@@ -6,46 +6,28 @@ namespace BasicGroceryStore.BusinessLogicLayer
 {
     internal class BUS_Promotion
     {
-        private DAO_Promotion daoPromotion;
+        private readonly DAO_Promotion dao = new DAO_Promotion();
 
-        public BUS_Promotion()
-        {
-            daoPromotion = new DAO_Promotion();
-        }
+        public bool Create(Promotion p) => dao.Create(p);
+        public bool Update(Promotion p) => dao.Update(p);
+        public bool Delete(string id) => dao.Delete(id);
+        public DataTable GetAllPromotion() => dao.GetAllPromotion();
+        public DataTable GetTotalSavedByPromotion() => dao.GetTotalSavedByPromotion();
 
-        public bool Create(Promotion promotion)
-        {
-            return daoPromotion.Create(promotion);
-        }
+        public DataTable GetProductByPromotion(string promoID)
+            => dao.GetProductByPromotion(promoID);
 
-        public bool Update(Promotion promotion)
-        {
-            return daoPromotion.Update(promotion);
-        }
-        public float GetDiscountByCategory(string category)
-        {
-            return daoPromotion.GetDiscountByCategory(category);
-        }
-        public bool Delete(string id)
-        {
-            return daoPromotion.Delete(id);
-        }
+        public DataTable GetProductsNotInPromotion(string promoID)
+            => dao.GetProductsNotInPromotion(promoID);
 
-        public DataTable GetAllPromotion()
-        {
-            return daoPromotion.GetAllPromotion();
-        }
+        public bool AddProductToPromotion(string promoID, string productID)
+            => dao.AddProductToPromotion(promoID, productID);
 
-        // ✅ chỉ giữ 1 hàm duy nhất
-        public DataTable GetProductByPromotion(string promotionID)
-        {
-            return daoPromotion.GetProductByPromotion(promotionID);
-        }
+        public bool RemoveProductFromPromotion(string promoID, string productID)
+            => dao.RemoveProductFromPromotion(promoID, productID);
 
-        // ✅ thêm mapping promotion - product
-        public void AddProductToPromotion(string promotionID, string productID)
-        {
-            daoPromotion.InsertPromotionProduct(promotionID, productID);
-        }
+        /// <summary>Lấy % giảm giá của 1 sản phẩm cụ thể (dùng khi tính tiền)</summary>
+        public float GetDiscountByProduct(string productID)
+            => dao.GetDiscountByProduct(productID);
     }
 }

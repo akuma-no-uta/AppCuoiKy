@@ -1,5 +1,4 @@
-﻿
-namespace BasicGroceryStore
+﻿namespace BasicGroceryStore
 {
     partial class UCProductItem
     {
@@ -36,6 +35,8 @@ namespace BasicGroceryStore
             this.numUDQuantity = new System.Windows.Forms.NumericUpDown();
             this.lblProductName = new System.Windows.Forms.Label();
             this.lblProductPrice = new System.Windows.Forms.Label();
+            this.lblOriginalPrice = new System.Windows.Forms.Label();
+            this.lblDiscountBadge = new System.Windows.Forms.Label();
             this.pnlMain.SuspendLayout();
             this.pnlControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUDQuantity)).BeginInit();
@@ -49,6 +50,8 @@ namespace BasicGroceryStore
             this.pnlMain.Controls.Add(this.pnlControl);
             this.pnlMain.Controls.Add(this.lblProductName);
             this.pnlMain.Controls.Add(this.lblProductPrice);
+            this.pnlMain.Controls.Add(this.lblOriginalPrice);
+            this.pnlMain.Controls.Add(this.lblDiscountBadge);
             this.pnlMain.Location = new System.Drawing.Point(4, 5);
             this.pnlMain.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlMain.Name = "pnlMain";
@@ -131,6 +134,34 @@ namespace BasicGroceryStore
             this.lblProductPrice.TabIndex = 0;
             this.lblProductPrice.Text = "Price vnd";
             // 
+            // lblOriginalPrice — giá gốc gạch ngang, chỉ hiện khi có KM
+            // 
+            this.lblOriginalPrice.AutoSize = true;
+            this.lblOriginalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Strikeout, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOriginalPrice.ForeColor = System.Drawing.Color.Gray;
+            this.lblOriginalPrice.Location = new System.Drawing.Point(160, 0);
+            this.lblOriginalPrice.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblOriginalPrice.Name = "lblOriginalPrice";
+            this.lblOriginalPrice.Size = new System.Drawing.Size(90, 20);
+            this.lblOriginalPrice.TabIndex = 5;
+            this.lblOriginalPrice.Text = "";
+            this.lblOriginalPrice.Visible = false;
+            // 
+            // lblDiscountBadge — badge đỏ hiển thị % giảm
+            // 
+            this.lblDiscountBadge.AutoSize = true;
+            this.lblDiscountBadge.BackColor = System.Drawing.Color.OrangeRed;
+            this.lblDiscountBadge.ForeColor = System.Drawing.Color.White;
+            this.lblDiscountBadge.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDiscountBadge.Location = new System.Drawing.Point(160, 22);
+            this.lblDiscountBadge.Margin = new System.Windows.Forms.Padding(2);
+            this.lblDiscountBadge.Name = "lblDiscountBadge";
+            this.lblDiscountBadge.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.lblDiscountBadge.Size = new System.Drawing.Size(40, 20);
+            this.lblDiscountBadge.TabIndex = 6;
+            this.lblDiscountBadge.Text = "";
+            this.lblDiscountBadge.Visible = false;
+            // 
             // UCProductItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -157,6 +188,8 @@ namespace BasicGroceryStore
         private System.Windows.Forms.NumericUpDown numUDQuantity;
         private System.Windows.Forms.Label lblProductName;
         private System.Windows.Forms.Label lblProductPrice;
+        private System.Windows.Forms.Label lblOriginalPrice;
+        private System.Windows.Forms.Label lblDiscountBadge;
         private System.Windows.Forms.Button btnDelete;
     }
 }

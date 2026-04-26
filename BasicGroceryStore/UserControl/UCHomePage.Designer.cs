@@ -1,32 +1,18 @@
-﻿
-namespace BasicGroceryStore
+﻿namespace BasicGroceryStore
 {
     partial class UCHomePage
     {
-        /// <summary> 
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
-            {
                 components.Dispose();
-            }
             base.Dispose(disposing);
         }
 
         #region Component Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCHomePage));
@@ -59,15 +45,23 @@ namespace BasicGroceryStore
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.chartProfit = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnReloadValue = new System.Windows.Forms.Button();
-            this.txtSpendingDay = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
+            this.lblSpendingDayTrend = new System.Windows.Forms.Label();
+            this.lblSpendingDayReport = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtIncomeDay = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblIncomeDayTrend = new System.Windows.Forms.Label();
+            this.lblIncomeDayReport = new System.Windows.Forms.Label();
+            this.txtSpendingDay = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.txtProfit = new System.Windows.Forms.TextBox();
+            this.lblIncomeMonthTrend = new System.Windows.Forms.Label();
+            this.lblIncomeMonthReport = new System.Windows.Forms.Label();
+            this.lblSpendMonthTrend = new System.Windows.Forms.Label();
+            this.lblSpendMonthReport = new System.Windows.Forms.Label();
             this.pnlValue = new System.Windows.Forms.Panel();
             this.gbProductNewImport = new System.Windows.Forms.GroupBox();
             this.listBoxProductNewImport = new System.Windows.Forms.ListBox();
@@ -94,6 +88,11 @@ namespace BasicGroceryStore
             this.panel2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.txtTotalSpending = new System.Windows.Forms.TextBox();
+            this.pnlLowStock = new System.Windows.Forms.Panel();
+            this.lblLowStockTitle = new System.Windows.Forms.Label();
+            this.lblLowStockCount = new System.Windows.Forms.Label();
+            this.btnReloadLowStock = new System.Windows.Forms.Button();
+            this.dgvLowStock = new System.Windows.Forms.DataGridView();
             this.pnlMain.SuspendLayout();
             this.gbStoreContact.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picStoreLocation)).BeginInit();
@@ -119,6 +118,8 @@ namespace BasicGroceryStore
             ((System.ComponentModel.ISupportInitialize)(this.picCustomerLevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartProduct)).BeginInit();
             this.panel2.SuspendLayout();
+            this.pnlLowStock.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLowStock)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMain
@@ -185,7 +186,6 @@ namespace BasicGroceryStore
             this.pictContact.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictContact.TabIndex = 18;
             this.pictContact.TabStop = false;
-            this.pictContact.Click += new System.EventHandler(this.pictContact_Click);
             // 
             // picYoutube
             // 
@@ -272,12 +272,13 @@ namespace BasicGroceryStore
             this.gbStoreInfor.BackColor = System.Drawing.Color.LightSkyBlue;
             this.gbStoreInfor.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbStoreInfor.BackgroundImage")));
             this.gbStoreInfor.Controls.Add(this.panel4);
-            this.gbStoreInfor.Controls.Add(this.txtSpendingDay);
             this.gbStoreInfor.Controls.Add(this.flowLayoutPanel1);
             this.gbStoreInfor.Controls.Add(this.panel1);
+            this.gbStoreInfor.Controls.Add(this.txtSpendingDay);
             this.gbStoreInfor.Controls.Add(this.panel3);
             this.gbStoreInfor.Controls.Add(this.pnlValue);
             this.gbStoreInfor.Controls.Add(this.panel2);
+            this.gbStoreInfor.Controls.Add(this.pnlLowStock);
             this.gbStoreInfor.Location = new System.Drawing.Point(3, 3);
             this.gbStoreInfor.Name = "gbStoreInfor";
             this.gbStoreInfor.Size = new System.Drawing.Size(1500, 857);
@@ -302,7 +303,7 @@ namespace BasicGroceryStore
             // 
             this.groupBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.groupBox1.Controls.Add(this.listBox1);
-            this.groupBox1.Location = new System.Drawing.Point(415, 38);
+            this.groupBox1.Location = new System.Drawing.Point(440, 22);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(10, 10);
             this.groupBox1.TabIndex = 1;
@@ -347,7 +348,7 @@ namespace BasicGroceryStore
             this.groupBox2.Size = new System.Drawing.Size(527, 304);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Biểu đồ thu nhập tuần";
+            this.groupBox2.Text = "Biểu đồ lợi nhuận 7 ngày";
             // 
             // chartProfit
             // 
@@ -359,13 +360,13 @@ namespace BasicGroceryStore
             this.chartProfit.Name = "chartProfit";
             this.chartProfit.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Fire;
             series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.SplineArea;
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chartProfit.Series.Add(series1);
             this.chartProfit.Size = new System.Drawing.Size(505, 265);
             this.chartProfit.TabIndex = 0;
-            this.chartProfit.Text = "Product";
+            this.chartProfit.Text = "Lợi nhuận";
             // 
             // btnReloadValue
             // 
@@ -377,23 +378,15 @@ namespace BasicGroceryStore
             this.btnReloadValue.UseVisualStyleBackColor = true;
             this.btnReloadValue.Click += new System.EventHandler(this.btnReloadValue_Click);
             // 
-            // txtSpendingDay
-            // 
-            this.txtSpendingDay.BackColor = System.Drawing.Color.White;
-            this.txtSpendingDay.Location = new System.Drawing.Point(998, 171);
-            this.txtSpendingDay.Name = "txtSpendingDay";
-            this.txtSpendingDay.ReadOnly = true;
-            this.txtSpendingDay.Size = new System.Drawing.Size(209, 40);
-            this.txtSpendingDay.TabIndex = 4;
-            this.txtSpendingDay.TextChanged += new System.EventHandler(this.txtSpendingDay_TextChanged);
-            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.White;
             this.flowLayoutPanel1.Controls.Add(this.label2);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(998, 39);
+            this.flowLayoutPanel1.Controls.Add(this.lblSpendingDayTrend);
+            this.flowLayoutPanel1.Controls.Add(this.lblSpendingDayReport);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(1047, 36);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(209, 139);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(274, 135);
             this.flowLayoutPanel1.TabIndex = 13;
             // 
             // label2
@@ -406,24 +399,48 @@ namespace BasicGroceryStore
             this.label2.TabIndex = 3;
             this.label2.Text = "Chi tiêu ngày";
             // 
+            // lblSpendingDayTrend
+            // 
+            this.lblSpendingDayTrend.AutoSize = true;
+            this.lblSpendingDayTrend.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.lblSpendingDayTrend.ForeColor = System.Drawing.Color.Gray;
+            this.lblSpendingDayTrend.Location = new System.Drawing.Point(3, 33);
+            this.lblSpendingDayTrend.Name = "lblSpendingDayTrend";
+            this.lblSpendingDayTrend.Size = new System.Drawing.Size(109, 23);
+            this.lblSpendingDayTrend.TabIndex = 52;
+            this.lblSpendingDayTrend.Text = "— Đang tải...";
+            // 
+            // lblSpendingDayReport
+            // 
+            this.lblSpendingDayReport.AutoSize = true;
+            this.lblSpendingDayReport.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.lblSpendingDayReport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
+            this.lblSpendingDayReport.Location = new System.Drawing.Point(118, 33);
+            this.lblSpendingDayReport.Name = "lblSpendingDayReport";
+            this.lblSpendingDayReport.Size = new System.Drawing.Size(0, 21);
+            this.lblSpendingDayReport.TabIndex = 53;
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.txtIncomeDay);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(757, 39);
+            this.panel1.Controls.Add(this.lblIncomeDayTrend);
+            this.panel1.Controls.Add(this.lblIncomeDayReport);
+            this.panel1.Location = new System.Drawing.Point(783, 36);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(208, 163);
+            this.panel1.Size = new System.Drawing.Size(230, 175);
             this.panel1.TabIndex = 11;
             // 
             // txtIncomeDay
             // 
             this.txtIncomeDay.BackColor = System.Drawing.Color.White;
-            this.txtIncomeDay.Location = new System.Drawing.Point(0, 132);
+            this.txtIncomeDay.Location = new System.Drawing.Point(0, 135);
             this.txtIncomeDay.Name = "txtIncomeDay";
             this.txtIncomeDay.ReadOnly = true;
-            this.txtIncomeDay.Size = new System.Drawing.Size(301, 40);
+            this.txtIncomeDay.Size = new System.Drawing.Size(230, 40);
             this.txtIncomeDay.TabIndex = 2;
+            this.txtIncomeDay.TextChanged += new System.EventHandler(this.txtIncomeDay_TextChanged);
             // 
             // label1
             // 
@@ -435,14 +452,46 @@ namespace BasicGroceryStore
             this.label1.TabIndex = 0;
             this.label1.Text = "Thu nhập ngày";
             // 
+            // lblIncomeDayTrend
+            // 
+            this.lblIncomeDayTrend.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.lblIncomeDayTrend.ForeColor = System.Drawing.Color.Gray;
+            this.lblIncomeDayTrend.Location = new System.Drawing.Point(0, 178);
+            this.lblIncomeDayTrend.Name = "lblIncomeDayTrend";
+            this.lblIncomeDayTrend.Size = new System.Drawing.Size(208, 20);
+            this.lblIncomeDayTrend.TabIndex = 50;
+            this.lblIncomeDayTrend.Text = "— Đang tải...";
+            // 
+            // lblIncomeDayReport
+            // 
+            this.lblIncomeDayReport.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.lblIncomeDayReport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
+            this.lblIncomeDayReport.Location = new System.Drawing.Point(0, 185);
+            this.lblIncomeDayReport.Name = "lblIncomeDayReport";
+            this.lblIncomeDayReport.Size = new System.Drawing.Size(208, 20);
+            this.lblIncomeDayReport.TabIndex = 51;
+            // 
+            // txtSpendingDay
+            // 
+            this.txtSpendingDay.BackColor = System.Drawing.Color.White;
+            this.txtSpendingDay.Location = new System.Drawing.Point(1047, 171);
+            this.txtSpendingDay.Name = "txtSpendingDay";
+            this.txtSpendingDay.ReadOnly = true;
+            this.txtSpendingDay.Size = new System.Drawing.Size(274, 40);
+            this.txtSpendingDay.TabIndex = 4;
+            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.txtProfit);
+            this.panel3.Controls.Add(this.lblIncomeMonthTrend);
+            this.panel3.Controls.Add(this.lblIncomeMonthReport);
+            this.panel3.Controls.Add(this.lblSpendMonthTrend);
+            this.panel3.Controls.Add(this.lblSpendMonthReport);
             this.panel3.Location = new System.Drawing.Point(32, 36);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(477, 166);
+            this.panel3.Size = new System.Drawing.Size(502, 210);
             this.panel3.TabIndex = 14;
             // 
             // label5
@@ -458,12 +507,49 @@ namespace BasicGroceryStore
             // txtProfit
             // 
             this.txtProfit.BackColor = System.Drawing.Color.White;
-            this.txtProfit.Location = new System.Drawing.Point(3, 135);
+            this.txtProfit.Location = new System.Drawing.Point(0, 172);
             this.txtProfit.Name = "txtProfit";
             this.txtProfit.ReadOnly = true;
-            this.txtProfit.Size = new System.Drawing.Size(477, 40);
+            this.txtProfit.Size = new System.Drawing.Size(502, 40);
             this.txtProfit.TabIndex = 10;
-            this.txtProfit.TextChanged += new System.EventHandler(this.txtProfit_TextChanged_1);
+            // 
+            // lblIncomeMonthTrend
+            // 
+            this.lblIncomeMonthTrend.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.lblIncomeMonthTrend.ForeColor = System.Drawing.Color.Gray;
+            this.lblIncomeMonthTrend.Location = new System.Drawing.Point(-4, 32);
+            this.lblIncomeMonthTrend.Name = "lblIncomeMonthTrend";
+            this.lblIncomeMonthTrend.Size = new System.Drawing.Size(471, 20);
+            this.lblIncomeMonthTrend.TabIndex = 54;
+            this.lblIncomeMonthTrend.Text = "— Doanh thu tháng đang tải...";
+            // 
+            // lblIncomeMonthReport
+            // 
+            this.lblIncomeMonthReport.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.lblIncomeMonthReport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
+            this.lblIncomeMonthReport.Location = new System.Drawing.Point(-1, 56);
+            this.lblIncomeMonthReport.Name = "lblIncomeMonthReport";
+            this.lblIncomeMonthReport.Size = new System.Drawing.Size(503, 51);
+            this.lblIncomeMonthReport.TabIndex = 55;
+            // 
+            // lblSpendMonthTrend
+            // 
+            this.lblSpendMonthTrend.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.lblSpendMonthTrend.ForeColor = System.Drawing.Color.Gray;
+            this.lblSpendMonthTrend.Location = new System.Drawing.Point(3, 104);
+            this.lblSpendMonthTrend.Name = "lblSpendMonthTrend";
+            this.lblSpendMonthTrend.Size = new System.Drawing.Size(503, 21);
+            this.lblSpendMonthTrend.TabIndex = 56;
+            this.lblSpendMonthTrend.Text = "— Chi phí tháng đang tải...";
+            // 
+            // lblSpendMonthReport
+            // 
+            this.lblSpendMonthReport.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.lblSpendMonthReport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
+            this.lblSpendMonthReport.Location = new System.Drawing.Point(-4, 125);
+            this.lblSpendMonthReport.Name = "lblSpendMonthReport";
+            this.lblSpendMonthReport.Size = new System.Drawing.Size(506, 50);
+            this.lblSpendMonthReport.TabIndex = 57;
             // 
             // pnlValue
             // 
@@ -477,7 +563,6 @@ namespace BasicGroceryStore
             this.pnlValue.Name = "pnlValue";
             this.pnlValue.Size = new System.Drawing.Size(709, 445);
             this.pnlValue.TabIndex = 0;
-            this.pnlValue.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlValue_Paint);
             // 
             // gbProductNewImport
             // 
@@ -568,6 +653,7 @@ namespace BasicGroceryStore
             this.dgvCustomer.RowHeadersWidth = 62;
             this.dgvCustomer.Size = new System.Drawing.Size(654, 267);
             this.dgvCustomer.TabIndex = 35;
+            this.dgvCustomer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomer_CellContentClick);
             // 
             // pnlCustomer
             // 
@@ -623,7 +709,6 @@ namespace BasicGroceryStore
             this.btnAddCustomer.TabIndex = 24;
             this.btnAddCustomer.Text = "Thêm khách hàng";
             this.btnAddCustomer.UseVisualStyleBackColor = true;
-            this.btnAddCustomer.Click += new System.EventHandler(this.btnAddCustomer_Click);
             // 
             // gbCustomerLevel
             // 
@@ -741,9 +826,9 @@ namespace BasicGroceryStore
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.txtTotalSpending);
-            this.panel2.Location = new System.Drawing.Point(541, 36);
+            this.panel2.Location = new System.Drawing.Point(558, 36);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(195, 166);
+            this.panel2.Size = new System.Drawing.Size(195, 175);
             this.panel2.TabIndex = 12;
             // 
             // label4
@@ -755,7 +840,6 @@ namespace BasicGroceryStore
             this.label4.Size = new System.Drawing.Size(195, 33);
             this.label4.TabIndex = 7;
             this.label4.Text = "Tổng chi tiêu";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // txtTotalSpending
             // 
@@ -765,6 +849,70 @@ namespace BasicGroceryStore
             this.txtTotalSpending.ReadOnly = true;
             this.txtTotalSpending.Size = new System.Drawing.Size(306, 40);
             this.txtTotalSpending.TabIndex = 8;
+            // 
+            // pnlLowStock
+            // 
+            this.pnlLowStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(45)))), ((int)(((byte)(65)))));
+            this.pnlLowStock.Controls.Add(this.lblLowStockTitle);
+            this.pnlLowStock.Controls.Add(this.lblLowStockCount);
+            this.pnlLowStock.Controls.Add(this.btnReloadLowStock);
+            this.pnlLowStock.Controls.Add(this.dgvLowStock);
+            this.pnlLowStock.Location = new System.Drawing.Point(1340, 269);
+            this.pnlLowStock.Name = "pnlLowStock";
+            this.pnlLowStock.Size = new System.Drawing.Size(440, 440);
+            this.pnlLowStock.TabIndex = 8;
+            // 
+            // lblLowStockTitle
+            // 
+            this.lblLowStockTitle.AutoSize = true;
+            this.lblLowStockTitle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblLowStockTitle.ForeColor = System.Drawing.Color.White;
+            this.lblLowStockTitle.Location = new System.Drawing.Point(6, 6);
+            this.lblLowStockTitle.Name = "lblLowStockTitle";
+            this.lblLowStockTitle.Size = new System.Drawing.Size(274, 28);
+            this.lblLowStockTitle.TabIndex = 60;
+            this.lblLowStockTitle.Text = "CẢNH BÁO TỒN KHO THẤP";
+            // 
+            // lblLowStockCount
+            // 
+            this.lblLowStockCount.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblLowStockCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(190)))), ((int)(((byte)(60)))));
+            this.lblLowStockCount.Location = new System.Drawing.Point(6, 36);
+            this.lblLowStockCount.Name = "lblLowStockCount";
+            this.lblLowStockCount.Size = new System.Drawing.Size(340, 24);
+            this.lblLowStockCount.TabIndex = 61;
+            this.lblLowStockCount.Text = "Đang kiểm tra tồn kho...";
+            // 
+            // btnReloadLowStock
+            // 
+            this.btnReloadLowStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(80)))), ((int)(((byte)(120)))));
+            this.btnReloadLowStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReloadLowStock.ForeColor = System.Drawing.Color.White;
+            this.btnReloadLowStock.Location = new System.Drawing.Point(352, 33);
+            this.btnReloadLowStock.Name = "btnReloadLowStock";
+            this.btnReloadLowStock.Size = new System.Drawing.Size(72, 30);
+            this.btnReloadLowStock.TabIndex = 62;
+            this.btnReloadLowStock.Text = "Tải lại";
+            this.btnReloadLowStock.UseVisualStyleBackColor = false;
+            this.btnReloadLowStock.Click += new System.EventHandler(this.btnReloadLowStock_Click);
+            // 
+            // dgvLowStock
+            // 
+            this.dgvLowStock.AllowUserToAddRows = false;
+            this.dgvLowStock.AllowUserToDeleteRows = false;
+            this.dgvLowStock.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvLowStock.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(34)))), ((int)(((byte)(48)))));
+            this.dgvLowStock.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvLowStock.ColumnHeadersHeight = 34;
+            this.dgvLowStock.Location = new System.Drawing.Point(6, 68);
+            this.dgvLowStock.MultiSelect = false;
+            this.dgvLowStock.Name = "dgvLowStock";
+            this.dgvLowStock.ReadOnly = true;
+            this.dgvLowStock.RowHeadersVisible = false;
+            this.dgvLowStock.RowHeadersWidth = 62;
+            this.dgvLowStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvLowStock.Size = new System.Drawing.Size(428, 360);
+            this.dgvLowStock.TabIndex = 63;
             // 
             // UCHomePage
             // 
@@ -809,12 +957,16 @@ namespace BasicGroceryStore
             ((System.ComponentModel.ISupportInitialize)(this.chartProduct)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.pnlLowStock.ResumeLayout(false);
+            this.pnlLowStock.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLowStock)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
+        // ── Fields gốc ────────────────────────────────────────
         private System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.GroupBox pnlCustomer;
         private System.Windows.Forms.GroupBox gbStoreContact;
@@ -871,5 +1023,20 @@ namespace BasicGroceryStore
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.DataGridView dgvCustomer;
+
+        // ── Fields MỚI ────────────────────────────────────────
+        private System.Windows.Forms.Label lblIncomeDayTrend;
+        private System.Windows.Forms.Label lblIncomeDayReport;
+        private System.Windows.Forms.Label lblSpendingDayTrend;
+        private System.Windows.Forms.Label lblSpendingDayReport;
+        private System.Windows.Forms.Label lblIncomeMonthTrend;
+        private System.Windows.Forms.Label lblIncomeMonthReport;
+        private System.Windows.Forms.Label lblSpendMonthTrend;
+        private System.Windows.Forms.Label lblSpendMonthReport;
+        private System.Windows.Forms.Panel pnlLowStock;
+        private System.Windows.Forms.Label lblLowStockTitle;
+        private System.Windows.Forms.Label lblLowStockCount;
+        private System.Windows.Forms.DataGridView dgvLowStock;
+        private System.Windows.Forms.Button btnReloadLowStock;
     }
 }

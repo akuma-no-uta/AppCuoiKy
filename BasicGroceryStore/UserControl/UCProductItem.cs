@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace BasicGroceryStore
@@ -11,21 +12,23 @@ namespace BasicGroceryStore
 
         public string product_id;
         public string product_name;
-        public float product_price;
+        public float product_price;            // giá SAU giảm (dùng để tính tiền)
+        public float product_original_price;   // giá GỐC (để hiển thị gạch ngang)
+        public float product_discount;         // % giảm (0 nếu không có KM)
         public int product_quantity;
         public double total_value;
         #endregion
 
-        /// <summary>
-        /// Using to show item in Order and Import
-        /// </summary>
-        /// <param name="container"></param>
-        /// <param name="txtTotalPrice"></param>
-        /// <param name="product_id"></param>
-        /// <param name="product_name"></param>
-        /// <param name="product_price"></param>
+        /// <summary>Constructor cũ — tương thích ngược</summary>
         public UCProductItem(FlowLayoutPanel container, TextBox txtTotalPrice,
             string product_id, string product_name, float product_price)
+            : this(container, txtTotalPrice, product_id, product_name, product_price, product_price, 0)
+        { }
+
+        /// <summary>Constructor đầy đủ — truyền cả giá gốc và % giảm</summary>
+        public UCProductItem(FlowLayoutPanel container, TextBox txtTotalPrice,
+            string product_id, string product_name,
+            float product_price, float original_price, float discount)
         {
             InitializeComponent();
 
@@ -35,22 +38,21 @@ namespace BasicGroceryStore
             this.product_id = product_id;
             this.product_name = product_name;
             this.product_price = product_price;
+            this.product_original_price = original_price;
+            this.product_discount = discount;
             this.product_quantity = 1;
         }
 
-        /// <summary>
-        /// Change total bill when bill control has a change
-        /// </summary>
+        /// <summary>Tính lại tổng hóa đơn và cập nhật txtTotalPrice</summary>
         public void CalculateTotalPrice()
         {
             double bill_sum = 0;
-
             foreach (UCProductItem item in _container.Controls)
-            {
                 bill_sum += item.total_value;
-            }
 
-            _txtTotalPrice.Text = bill_sum.ToString();
+            // Lưu số thô vào Tag để Parse về sau, hiển thị format đẹp
+            _txtTotalPrice.Tag = bill_sum;
+            _txtTotalPrice.Text = bill_sum.ToString("#,0") + " đ";
         }
 
         private void IncreaseQuantity()
@@ -65,28 +67,51 @@ namespace BasicGroceryStore
 
         public int FindThisItemInContainer()
         {
-            foreach(UCProductItem item in _container.Controls)
+            foreach (UCProductItem item in _container.Controls)
             {
                 if (item.product_id == this.product_id)
-                {
                     return _container.Controls.GetChildIndex(item);
-                }
             }
             return -1;
         }
 
-        /// <summary>
-        /// Add new item or increase if they was availabled
-        /// </summary>
+        /// <summary>Thêm item mới hoặc tăng số lượng nếu đã có</summary>
         public void SettingItem()
         {
             int index = FindThisItemInContainer();
-            if (index == -1) // New
+            if (index == -1)
             {
                 lblProductName.Text = product_name;
-                lblProductPrice.Text = GetFormatString.GetCurrencyString(product_price);
-                txtProductValue.Text = product_price.ToString();
                 total_value = product_price;
+
+                lblProductPrice.Text = product_price.ToString("#,0") + " đ";
+                txtProductValue.Text = product_price.ToString("#,0") + " đ";
+
+                if (product_discount > 0 && product_original_price > product_price)
+                {
+                    // Hiện giá gốc gạch ngang
+                    lblOriginalPrice.Text = product_original_price.ToString("#,0") + " đ";
+                    lblOriginalPrice.Visible = true;
+                    lblOriginalPrice.Font = new Font(lblOriginalPrice.Font.FontFamily,
+                                                       lblOriginalPrice.Font.Size,
+                                                       FontStyle.Strikeout);
+
+                    // Badge % giảm
+                    lblDiscountBadge.Text = $"-{product_discount:0}%";
+                    lblDiscountBadge.Visible = true;
+
+                    // Làm nổi bật giá sau giảm
+                    lblProductPrice.ForeColor = Color.DarkRed;
+                    lblProductPrice.Font = new Font(lblProductPrice.Font.FontFamily,
+                                                        lblProductPrice.Font.Size,
+                                                        FontStyle.Bold);
+                }
+                else
+                {
+                    lblOriginalPrice.Visible = false;
+                    lblDiscountBadge.Visible = false;
+                    lblProductPrice.ForeColor = Color.Black;
+                }
 
                 _container.Controls.Add(this);
             }
@@ -101,7 +126,7 @@ namespace BasicGroceryStore
         {
             product_quantity = (int)numUDQuantity.Value;
             total_value = product_quantity * product_price;
-            txtProductValue.Text = total_value.ToString();
+            txtProductValue.Text = total_value.ToString("#,0") + " đ";
             CalculateTotalPrice();
         }
 

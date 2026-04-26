@@ -32,22 +32,21 @@ namespace BasicGroceryStore
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCStaff));
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.cbDateContract = new System.Windows.Forms.ComboBox();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.gbDetail = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btnLoadStaffInfor = new System.Windows.Forms.Button();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.btnShowPassword = new System.Windows.Forms.Button();
+            this.btnChangePassword = new System.Windows.Forms.Button();
             this.txtGender = new System.Windows.Forms.TextBox();
             this.gbContractsAndAccount = new System.Windows.Forms.GroupBox();
             this.dgvContracts = new System.Windows.Forms.DataGridView();
-            this.btnMakeContract = new System.Windows.Forms.Button();
-            this.btnLoadStaffInfor = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.btnEditStaffInfor = new System.Windows.Forms.Button();
-            this.btnShowPassword = new System.Windows.Forms.Button();
-            this.btnChangePassword = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.txtUsername = new System.Windows.Forms.TextBox();
             this.dtPickDoB = new System.Windows.Forms.DateTimePicker();
             this.txtPhone = new System.Windows.Forms.MaskedTextBox();
             this.txtCitizenID = new System.Windows.Forms.MaskedTextBox();
@@ -62,7 +61,12 @@ namespace BasicGroceryStore
             this.label2 = new System.Windows.Forms.Label();
             this.picRepresent = new System.Windows.Forms.PictureBox();
             this.gbFilter = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dgvStaff = new System.Windows.Forms.DataGridView();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnAddNew = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnFind = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -73,53 +77,39 @@ namespace BasicGroceryStore
             this.txtAddressFilter = new System.Windows.Forms.TextBox();
             this.cbGenderFilter = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
             this.chbName = new System.Windows.Forms.CheckBox();
             this.chbAge = new System.Windows.Forms.CheckBox();
             this.chbAddress = new System.Windows.Forms.CheckBox();
             this.btnReload = new System.Windows.Forms.Button();
             this.chbGender = new System.Windows.Forms.CheckBox();
-            this.chbDateContract = new System.Windows.Forms.CheckBox();
             this.chbTypeWork = new System.Windows.Forms.CheckBox();
             this.chbSpells = new System.Windows.Forms.CheckBox();
-            this.dgvStaff = new System.Windows.Forms.DataGridView();
-            this.btnAddNew = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.cbSpells = new System.Windows.Forms.ComboBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnMakeContract = new System.Windows.Forms.Button();
+            this.chbDateContract = new System.Windows.Forms.CheckBox();
+            this.cbDateContract = new System.Windows.Forms.ComboBox();
             this.pnlMain.SuspendLayout();
             this.gbDetail.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.gbContractsAndAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContracts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRepresent)).BeginInit();
             this.gbFilter.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUDTo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUDFrom)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // cbDateContract
-            // 
-            this.cbDateContract.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbDateContract.FormattingEnabled = true;
-            this.cbDateContract.Location = new System.Drawing.Point(22, 191);
-            this.cbDateContract.Name = "cbDateContract";
-            this.cbDateContract.Size = new System.Drawing.Size(297, 33);
-            this.cbDateContract.TabIndex = 16;
-            this.toolTip.SetToolTip(this.cbDateContract, "Unexpired: Còn hạn\r\nExpiration soon: Sắp hết hạn\r\nExpired: Hết hạn\r\n");
-            this.cbDateContract.SelectedIndexChanged += new System.EventHandler(this.cbDateContract_SelectedIndexChanged);
             // 
             // pnlMain
             // 
             this.pnlMain.BackColor = System.Drawing.Color.Peru;
             this.pnlMain.Controls.Add(this.gbDetail);
             this.pnlMain.Controls.Add(this.gbFilter);
+            this.pnlMain.Controls.Add(this.chbSpells);
             this.pnlMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
             this.pnlMain.Name = "pnlMain";
@@ -155,6 +145,94 @@ namespace BasicGroceryStore
             this.gbDetail.TabStop = false;
             this.gbDetail.Text = "Thông tin nhân viên và hợp đồng";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.Color.White;
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.btnLoadStaffInfor);
+            this.groupBox2.Controls.Add(this.txtUsername);
+            this.groupBox2.Controls.Add(this.txtPassword);
+            this.groupBox2.Controls.Add(this.btnShowPassword);
+            this.groupBox2.Controls.Add(this.btnChangePassword);
+            this.groupBox2.Location = new System.Drawing.Point(9, 284);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(561, 133);
+            this.groupBox2.TabIndex = 34;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Tài khoản";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(19, 27);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(99, 25);
+            this.label9.TabIndex = 32;
+            this.label9.Text = "Tài khoản";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(19, 62);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(93, 25);
+            this.label10.TabIndex = 34;
+            this.label10.Text = "Mật khẩu";
+            // 
+            // btnLoadStaffInfor
+            // 
+            this.btnLoadStaffInfor.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnLoadStaffInfor.ForeColor = System.Drawing.Color.White;
+            this.btnLoadStaffInfor.Location = new System.Drawing.Point(3, 92);
+            this.btnLoadStaffInfor.Name = "btnLoadStaffInfor";
+            this.btnLoadStaffInfor.Size = new System.Drawing.Size(162, 36);
+            this.btnLoadStaffInfor.TabIndex = 32;
+            this.btnLoadStaffInfor.Text = "Tải thông tin";
+            this.btnLoadStaffInfor.UseVisualStyleBackColor = false;
+            this.btnLoadStaffInfor.Click += new System.EventHandler(this.btnLoadStaffInfor_Click);
+            // 
+            // txtUsername
+            // 
+            this.txtUsername.Location = new System.Drawing.Point(136, 18);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.ReadOnly = true;
+            this.txtUsername.Size = new System.Drawing.Size(394, 30);
+            this.txtUsername.TabIndex = 32;
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Location = new System.Drawing.Point(136, 59);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.ReadOnly = true;
+            this.txtPassword.Size = new System.Drawing.Size(394, 30);
+            this.txtPassword.TabIndex = 33;
+            // 
+            // btnShowPassword
+            // 
+            this.btnShowPassword.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnShowPassword.ForeColor = System.Drawing.Color.White;
+            this.btnShowPassword.Location = new System.Drawing.Point(179, 94);
+            this.btnShowPassword.Name = "btnShowPassword";
+            this.btnShowPassword.Size = new System.Drawing.Size(164, 35);
+            this.btnShowPassword.TabIndex = 35;
+            this.btnShowPassword.Text = "Hiện mật khẩu";
+            this.btnShowPassword.UseVisualStyleBackColor = false;
+            this.btnShowPassword.Click += new System.EventHandler(this.btnShowPassword_Click);
+            // 
+            // btnChangePassword
+            // 
+            this.btnChangePassword.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnChangePassword.ForeColor = System.Drawing.Color.White;
+            this.btnChangePassword.Location = new System.Drawing.Point(366, 94);
+            this.btnChangePassword.Name = "btnChangePassword";
+            this.btnChangePassword.Size = new System.Drawing.Size(164, 33);
+            this.btnChangePassword.TabIndex = 32;
+            this.btnChangePassword.Text = "Đổi mật khẩu";
+            this.btnChangePassword.UseVisualStyleBackColor = false;
+            this.btnChangePassword.Click += new System.EventHandler(this.btnChangePassword_Click);
+            // 
             // txtGender
             // 
             this.txtGender.Location = new System.Drawing.Point(297, 79);
@@ -187,30 +265,6 @@ namespace BasicGroceryStore
             this.dgvContracts.Size = new System.Drawing.Size(545, 234);
             this.dgvContracts.TabIndex = 37;
             // 
-            // btnMakeContract
-            // 
-            this.btnMakeContract.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnMakeContract.ForeColor = System.Drawing.Color.White;
-            this.btnMakeContract.Location = new System.Drawing.Point(385, 306);
-            this.btnMakeContract.Name = "btnMakeContract";
-            this.btnMakeContract.Size = new System.Drawing.Size(170, 36);
-            this.btnMakeContract.TabIndex = 24;
-            this.btnMakeContract.Text = "Tạo hợp đồng";
-            this.btnMakeContract.UseVisualStyleBackColor = false;
-            this.btnMakeContract.Click += new System.EventHandler(this.btnMakeContract_Click);
-            // 
-            // btnLoadStaffInfor
-            // 
-            this.btnLoadStaffInfor.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnLoadStaffInfor.ForeColor = System.Drawing.Color.White;
-            this.btnLoadStaffInfor.Location = new System.Drawing.Point(3, 92);
-            this.btnLoadStaffInfor.Name = "btnLoadStaffInfor";
-            this.btnLoadStaffInfor.Size = new System.Drawing.Size(162, 36);
-            this.btnLoadStaffInfor.TabIndex = 32;
-            this.btnLoadStaffInfor.Text = "Tải thông tin";
-            this.btnLoadStaffInfor.UseVisualStyleBackColor = false;
-            this.btnLoadStaffInfor.Click += new System.EventHandler(this.btnLoadStaffInfor_Click);
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -232,65 +286,6 @@ namespace BasicGroceryStore
             this.btnEditStaffInfor.Text = "Sửa thông tin";
             this.btnEditStaffInfor.UseVisualStyleBackColor = false;
             this.btnEditStaffInfor.Click += new System.EventHandler(this.btnEditStaffInfor_Click);
-            // 
-            // btnShowPassword
-            // 
-            this.btnShowPassword.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnShowPassword.ForeColor = System.Drawing.Color.White;
-            this.btnShowPassword.Location = new System.Drawing.Point(179, 94);
-            this.btnShowPassword.Name = "btnShowPassword";
-            this.btnShowPassword.Size = new System.Drawing.Size(164, 35);
-            this.btnShowPassword.TabIndex = 35;
-            this.btnShowPassword.Text = "Hiện mật khẩu";
-            this.btnShowPassword.UseVisualStyleBackColor = false;
-            this.btnShowPassword.Click += new System.EventHandler(this.btnShowPassword_Click);
-            // 
-            // btnChangePassword
-            // 
-            this.btnChangePassword.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnChangePassword.ForeColor = System.Drawing.Color.White;
-            this.btnChangePassword.Location = new System.Drawing.Point(366, 94);
-            this.btnChangePassword.Name = "btnChangePassword";
-            this.btnChangePassword.Size = new System.Drawing.Size(164, 33);
-            this.btnChangePassword.TabIndex = 32;
-            this.btnChangePassword.Text = "Đổi mật khẩu";
-            this.btnChangePassword.UseVisualStyleBackColor = false;
-            this.btnChangePassword.Click += new System.EventHandler(this.btnChangePassword_Click);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(19, 62);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(93, 25);
-            this.label10.TabIndex = 34;
-            this.label10.Text = "Mật khẩu";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(19, 27);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(99, 25);
-            this.label9.TabIndex = 32;
-            this.label9.Text = "Tài khoản";
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.Location = new System.Drawing.Point(136, 59);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.ReadOnly = true;
-            this.txtPassword.Size = new System.Drawing.Size(394, 30);
-            this.txtPassword.TabIndex = 33;
-            // 
-            // txtUsername
-            // 
-            this.txtUsername.Location = new System.Drawing.Point(136, 18);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.ReadOnly = true;
-            this.txtUsername.Size = new System.Drawing.Size(394, 30);
-            this.txtUsername.TabIndex = 32;
             // 
             // dtPickDoB
             // 
@@ -426,6 +421,8 @@ namespace BasicGroceryStore
             this.gbFilter.Controls.Add(this.panel2);
             this.gbFilter.Controls.Add(this.panel1);
             this.gbFilter.Controls.Add(this.cbSpells);
+            this.gbFilter.Controls.Add(this.chbDateContract);
+            this.gbFilter.Controls.Add(this.cbDateContract);
             this.gbFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbFilter.Location = new System.Drawing.Point(3, 3);
             this.gbFilter.Name = "gbFilter";
@@ -433,6 +430,54 @@ namespace BasicGroceryStore
             this.gbFilter.TabIndex = 0;
             this.gbFilter.TabStop = false;
             this.gbFilter.Text = "Lọc thông tin";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.White;
+            this.groupBox1.Controls.Add(this.dgvStaff);
+            this.groupBox1.Controls.Add(this.btnDelete);
+            this.groupBox1.Controls.Add(this.btnAddNew);
+            this.groupBox1.Location = new System.Drawing.Point(6, 355);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(620, 416);
+            this.groupBox1.TabIndex = 26;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Đanh sách nhân viên";
+            // 
+            // dgvStaff
+            // 
+            this.dgvStaff.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvStaff.Location = new System.Drawing.Point(6, 29);
+            this.dgvStaff.Name = "dgvStaff";
+            this.dgvStaff.RowHeadersWidth = 62;
+            this.dgvStaff.Size = new System.Drawing.Size(608, 331);
+            this.dgvStaff.TabIndex = 23;
+            this.dgvStaff.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStaff_CellClick);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnDelete.ForeColor = System.Drawing.Color.White;
+            this.btnDelete.Location = new System.Drawing.Point(437, 374);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(183, 36);
+            this.btnDelete.TabIndex = 19;
+            this.btnDelete.Text = "Xóa thông tin";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnAddNew
+            // 
+            this.btnAddNew.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnAddNew.ForeColor = System.Drawing.Color.White;
+            this.btnAddNew.Location = new System.Drawing.Point(5, 374);
+            this.btnAddNew.Name = "btnAddNew";
+            this.btnAddNew.Size = new System.Drawing.Size(183, 36);
+            this.btnAddNew.TabIndex = 21;
+            this.btnAddNew.Text = "Thêm mới";
+            this.btnAddNew.UseVisualStyleBackColor = false;
+            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
             // 
             // panel2
             // 
@@ -443,7 +488,6 @@ namespace BasicGroceryStore
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.numUDTo);
             this.panel2.Controls.Add(this.numUDFrom);
-            this.panel2.Controls.Add(this.cbDateContract);
             this.panel2.Controls.Add(this.cbTypeWork);
             this.panel2.Controls.Add(this.txtNameFilter);
             this.panel2.Controls.Add(this.txtAddressFilter);
@@ -453,11 +497,21 @@ namespace BasicGroceryStore
             this.panel2.Size = new System.Drawing.Size(359, 310);
             this.panel2.TabIndex = 25;
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(131, 9);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(125, 25);
+            this.label13.TabIndex = 22;
+            this.label13.Text = "Thông số lọc";
+            this.label13.Click += new System.EventHandler(this.label13_Click);
+            // 
             // btnClear
             // 
             this.btnClear.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Location = new System.Drawing.Point(14, 267);
+            this.btnClear.Location = new System.Drawing.Point(22, 239);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(115, 36);
             this.btnClear.TabIndex = 17;
@@ -469,7 +523,7 @@ namespace BasicGroceryStore
             // 
             this.btnFind.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnFind.ForeColor = System.Drawing.Color.White;
-            this.btnFind.Location = new System.Drawing.Point(181, 268);
+            this.btnFind.Location = new System.Drawing.Point(181, 239);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(138, 36);
             this.btnFind.TabIndex = 18;
@@ -535,7 +589,7 @@ namespace BasicGroceryStore
             // 
             this.cbTypeWork.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTypeWork.FormattingEnabled = true;
-            this.cbTypeWork.Location = new System.Drawing.Point(22, 230);
+            this.cbTypeWork.Location = new System.Drawing.Point(22, 191);
             this.cbTypeWork.Name = "cbTypeWork";
             this.cbTypeWork.Size = new System.Drawing.Size(297, 33);
             this.cbTypeWork.TabIndex = 11;
@@ -577,14 +631,21 @@ namespace BasicGroceryStore
             this.panel1.Controls.Add(this.chbAddress);
             this.panel1.Controls.Add(this.btnReload);
             this.panel1.Controls.Add(this.chbGender);
-            this.panel1.Controls.Add(this.chbDateContract);
             this.panel1.Controls.Add(this.chbTypeWork);
-            this.panel1.Controls.Add(this.chbSpells);
             this.panel1.Location = new System.Drawing.Point(12, 30);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(232, 309);
             this.panel1.TabIndex = 24;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(64, 9);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(66, 25);
+            this.label12.TabIndex = 21;
+            this.label12.Text = "Bộ lọc";
             // 
             // chbName
             // 
@@ -629,7 +690,7 @@ namespace BasicGroceryStore
             // 
             this.btnReload.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnReload.ForeColor = System.Drawing.Color.White;
-            this.btnReload.Location = new System.Drawing.Point(22, 262);
+            this.btnReload.Location = new System.Drawing.Point(20, 238);
             this.btnReload.Name = "btnReload";
             this.btnReload.Size = new System.Drawing.Size(174, 37);
             this.btnReload.TabIndex = 20;
@@ -642,7 +703,7 @@ namespace BasicGroceryStore
             this.chbGender.AutoSize = true;
             this.chbGender.Checked = true;
             this.chbGender.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbGender.Location = new System.Drawing.Point(3, 147);
+            this.chbGender.Location = new System.Drawing.Point(3, 158);
             this.chbGender.Name = "chbGender";
             this.chbGender.Size = new System.Drawing.Size(108, 29);
             this.chbGender.TabIndex = 3;
@@ -650,25 +711,12 @@ namespace BasicGroceryStore
             this.chbGender.UseVisualStyleBackColor = true;
             this.chbGender.CheckedChanged += new System.EventHandler(this.chbGender_CheckedChanged);
             // 
-            // chbDateContract
-            // 
-            this.chbDateContract.AutoSize = true;
-            this.chbDateContract.Checked = true;
-            this.chbDateContract.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbDateContract.Location = new System.Drawing.Point(5, 188);
-            this.chbDateContract.Name = "chbDateContract";
-            this.chbDateContract.Size = new System.Drawing.Size(161, 29);
-            this.chbDateContract.TabIndex = 4;
-            this.chbDateContract.Text = "Hạn hợp đồng";
-            this.chbDateContract.UseVisualStyleBackColor = true;
-            this.chbDateContract.CheckedChanged += new System.EventHandler(this.chbDateContract_CheckedChanged);
-            // 
             // chbTypeWork
             // 
             this.chbTypeWork.AutoSize = true;
             this.chbTypeWork.Checked = true;
             this.chbTypeWork.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbTypeWork.Location = new System.Drawing.Point(3, 230);
+            this.chbTypeWork.Location = new System.Drawing.Point(3, 192);
             this.chbTypeWork.Name = "chbTypeWork";
             this.chbTypeWork.Size = new System.Drawing.Size(173, 29);
             this.chbTypeWork.TabIndex = 5;
@@ -681,48 +729,14 @@ namespace BasicGroceryStore
             this.chbSpells.AutoSize = true;
             this.chbSpells.Checked = true;
             this.chbSpells.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbSpells.Location = new System.Drawing.Point(40, 267);
+            this.chbSpells.Location = new System.Drawing.Point(-128, 314);
             this.chbSpells.Name = "chbSpells";
-            this.chbSpells.Size = new System.Drawing.Size(153, 29);
+            this.chbSpells.Size = new System.Drawing.Size(216, 37);
             this.chbSpells.TabIndex = 7;
             this.chbSpells.Text = "Buổi làm việc";
             this.chbSpells.UseVisualStyleBackColor = true;
+            this.chbSpells.Visible = false;
             this.chbSpells.CheckedChanged += new System.EventHandler(this.chbSpells_CheckedChanged);
-            // 
-            // dgvStaff
-            // 
-            this.dgvStaff.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStaff.Location = new System.Drawing.Point(6, 29);
-            this.dgvStaff.Name = "dgvStaff";
-            this.dgvStaff.RowHeadersWidth = 62;
-            this.dgvStaff.Size = new System.Drawing.Size(608, 331);
-            this.dgvStaff.TabIndex = 23;
-            this.dgvStaff.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStaff_CellClick);
-            // 
-            // btnAddNew
-            // 
-            this.btnAddNew.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnAddNew.ForeColor = System.Drawing.Color.White;
-            this.btnAddNew.Location = new System.Drawing.Point(5, 374);
-            this.btnAddNew.Name = "btnAddNew";
-            this.btnAddNew.Size = new System.Drawing.Size(183, 36);
-            this.btnAddNew.TabIndex = 21;
-            this.btnAddNew.Text = "Thêm mới";
-            this.btnAddNew.UseVisualStyleBackColor = false;
-            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(437, 374);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(183, 36);
-            this.btnDelete.TabIndex = 19;
-            this.btnDelete.Text = "Xóa thông tin";
-            this.btnDelete.UseVisualStyleBackColor = false;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // cbSpells
             // 
@@ -734,54 +748,44 @@ namespace BasicGroceryStore
             this.cbSpells.TabIndex = 12;
             this.cbSpells.Visible = false;
             // 
-            // groupBox1
+            // btnMakeContract
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.White;
-            this.groupBox1.Controls.Add(this.dgvStaff);
-            this.groupBox1.Controls.Add(this.btnDelete);
-            this.groupBox1.Controls.Add(this.btnAddNew);
-            this.groupBox1.Location = new System.Drawing.Point(6, 355);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(620, 416);
-            this.groupBox1.TabIndex = 26;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Đanh sách nhân viên";
+            this.btnMakeContract.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnMakeContract.ForeColor = System.Drawing.Color.White;
+            this.btnMakeContract.Location = new System.Drawing.Point(385, 306);
+            this.btnMakeContract.Name = "btnMakeContract";
+            this.btnMakeContract.Size = new System.Drawing.Size(170, 36);
+            this.btnMakeContract.TabIndex = 24;
+            this.btnMakeContract.Text = "Tạo hợp đồng";
+            this.btnMakeContract.UseVisualStyleBackColor = false;
+            this.btnMakeContract.Visible = false;
+            this.btnMakeContract.Click += new System.EventHandler(this.btnMakeContract_Click);
             // 
-            // label12
+            // chbDateContract
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(64, 9);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(66, 25);
-            this.label12.TabIndex = 21;
-            this.label12.Text = "Bộ lọc";
+            this.chbDateContract.AutoSize = true;
+            this.chbDateContract.Checked = true;
+            this.chbDateContract.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chbDateContract.Location = new System.Drawing.Point(-155, 220);
+            this.chbDateContract.Name = "chbDateContract";
+            this.chbDateContract.Size = new System.Drawing.Size(161, 29);
+            this.chbDateContract.TabIndex = 4;
+            this.chbDateContract.Text = "Hạn hợp đồng";
+            this.chbDateContract.UseVisualStyleBackColor = true;
+            this.chbDateContract.Visible = false;
+            this.chbDateContract.CheckedChanged += new System.EventHandler(this.chbDateContract_CheckedChanged);
             // 
-            // label13
+            // cbDateContract
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(131, 9);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(125, 25);
-            this.label13.TabIndex = 22;
-            this.label13.Text = "Thông số lọc";
-            this.label13.Click += new System.EventHandler(this.label13_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.BackColor = System.Drawing.Color.White;
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.btnLoadStaffInfor);
-            this.groupBox2.Controls.Add(this.txtUsername);
-            this.groupBox2.Controls.Add(this.txtPassword);
-            this.groupBox2.Controls.Add(this.btnShowPassword);
-            this.groupBox2.Controls.Add(this.btnChangePassword);
-            this.groupBox2.Location = new System.Drawing.Point(9, 284);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(561, 133);
-            this.groupBox2.TabIndex = 34;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Tài khoản";
+            this.cbDateContract.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDateContract.FormattingEnabled = true;
+            this.cbDateContract.Location = new System.Drawing.Point(-4, 271);
+            this.cbDateContract.Name = "cbDateContract";
+            this.cbDateContract.Size = new System.Drawing.Size(10, 33);
+            this.cbDateContract.TabIndex = 16;
+            this.toolTip.SetToolTip(this.cbDateContract, "Unexpired: Còn hạn\r\nExpiration soon: Sắp hết hạn\r\nExpired: Hết hạn\r\n");
+            this.cbDateContract.Visible = false;
+            this.cbDateContract.SelectedIndexChanged += new System.EventHandler(this.cbDateContract_SelectedIndexChanged);
             // 
             // UCStaff
             // 
@@ -793,23 +797,25 @@ namespace BasicGroceryStore
             this.Name = "UCStaff";
             this.Size = new System.Drawing.Size(1350, 860);
             this.pnlMain.ResumeLayout(false);
+            this.pnlMain.PerformLayout();
             this.gbDetail.ResumeLayout(false);
             this.gbDetail.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.gbContractsAndAccount.ResumeLayout(false);
             this.gbContractsAndAccount.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContracts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRepresent)).EndInit();
             this.gbFilter.ResumeLayout(false);
+            this.gbFilter.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUDTo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUDFrom)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -825,7 +831,6 @@ namespace BasicGroceryStore
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.ComboBox cbDateContract;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown numUDTo;
         private System.Windows.Forms.NumericUpDown numUDFrom;
@@ -836,7 +841,6 @@ namespace BasicGroceryStore
         private System.Windows.Forms.TextBox txtNameFilter;
         private System.Windows.Forms.CheckBox chbSpells;
         private System.Windows.Forms.CheckBox chbTypeWork;
-        private System.Windows.Forms.CheckBox chbDateContract;
         private System.Windows.Forms.CheckBox chbGender;
         private System.Windows.Forms.CheckBox chbAddress;
         private System.Windows.Forms.CheckBox chbAge;
@@ -855,7 +859,6 @@ namespace BasicGroceryStore
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnEditStaffInfor;
-        private System.Windows.Forms.Button btnMakeContract;
         private System.Windows.Forms.GroupBox gbContractsAndAccount;
         private System.Windows.Forms.DataGridView dgvContracts;
         private System.Windows.Forms.Label label11;
@@ -873,5 +876,8 @@ namespace BasicGroceryStore
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnMakeContract;
+        private System.Windows.Forms.ComboBox cbDateContract;
+        private System.Windows.Forms.CheckBox chbDateContract;
     }
 }

@@ -2,151 +2,206 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Globalization;
 
 namespace BasicGroceryStore
 {
     internal class DAO_Bill : IBillServices
     {
         private string typeBill;
+
         public DAO_Bill(string typeBill)
         {
             this.typeBill = typeBill;
         }
+
         public bool CheckCustomerExists(string name, string phone)
         {
             DataTable dt = DataProvider.Instance.ExecuteQuery(
                 "SELECT * FROM CustomerMember WHERE Name = @Name AND Phone = @Phone",
                 CommandType.Text,
                 new SqlParameter("@Name", name),
-                new SqlParameter("@Phone", phone)
-            );
-
+                new SqlParameter("@Phone", phone));
             return dt.Rows.Count > 0;
         }
+
         public bool Create(Bill bill, string customerName)
         {
             List<SqlParameter> param = new List<SqlParameter>() {
-                new SqlParameter("@ID", bill.ID),
+                new SqlParameter("@ID",         bill.ID),
                 new SqlParameter("@DateCreate", bill.DateCreate),
-                new SqlParameter("@Value", bill.Value),
-                new SqlParameter("@StaffID", bill.StaffID) };
-        
-            if (typeBill == "Ordered") // for Ordered
-            {
+                new SqlParameter("@Value",      bill.Value),
+                new SqlParameter("@StaffID",    bill.StaffID) };
+            if (typeBill == "Ordered")
                 param.Add(new SqlParameter("@CustomerName", customerName));
-            }
-
-            return (DataProvider.Instance.ExecuteNonQuery($"sp_Insert{typeBill}", CommandType.StoredProcedure, param.ToArray()) > 0) ? true : false;
+            return DataProvider.Instance.ExecuteNonQuery(
+                $"sp_Insert{typeBill}", CommandType.StoredProcedure, param.ToArray()) > 0;
         }
 
         public bool Update(Bill bill, string customerName)
         {
-            SqlParameter[] param = new SqlParameter[] {
-                    new SqlParameter("@ID", bill.ID),
-                    new SqlParameter("@DateCreate", bill.DateCreate),
-                    new SqlParameter("@Value", bill.Value),
-                    new SqlParameter("@StaffID", bill.StaffID) };
-
-            if (typeBill == "Ordered") // for Ordered
-            {
-                param[param.Length] = new SqlParameter("@CustomerName", customerName);
-            }
-
-            return (DataProvider.Instance.ExecuteNonQuery($"sp_Update{typeBill}", CommandType.StoredProcedure, param) > 0) ? true : false;
+            List<SqlParameter> param = new List<SqlParameter>() {
+                new SqlParameter("@ID",         bill.ID),
+                new SqlParameter("@DateCreate", bill.DateCreate),
+                new SqlParameter("@Value",      bill.Value),
+                new SqlParameter("@StaffID",    bill.StaffID) };
+            if (typeBill == "Ordered")
+                param.Add(new SqlParameter("@CustomerName", customerName));
+            return DataProvider.Instance.ExecuteNonQuery(
+                $"sp_Update{typeBill}", CommandType.StoredProcedure, param.ToArray()) > 0;
         }
 
         public bool Delete(Bill bill)
         {
-            return (DataProvider.Instance.ExecuteNonQuery($"exec sp_Delete{typeBill}", CommandType.StoredProcedure, 
-                new SqlParameter("@ID", bill.ID)) > 0) ? true : false;
+            return DataProvider.Instance.ExecuteNonQuery(
+                $"sp_Delete{typeBill}", CommandType.StoredProcedure,
+                new SqlParameter("@ID", bill.ID)) > 0;
         }
 
         public DataTable GetAllBill()
         {
-            return DataProvider.Instance.ExecuteQuery($"select * from {typeBill}", CommandType.Text, null);
+            return DataProvider.Instance.ExecuteQuery(
+                $"SELECT * FROM {typeBill}", CommandType.Text, null);
         }
 
         public int GetQuantityOfBill()
         {
-            return (int)DataProvider.Instance.ExecuteScalar($"select dbo.func_NumberOf{typeBill}()", CommandType.Text);
+            return (int)DataProvider.Instance.ExecuteScalar(
+                $"SELECT dbo.func_NumberOf{typeBill}()", CommandType.Text);
         }
 
         public float GetValueOfBill(string bill_id)
         {
-            return (float)DataProvider.Instance.ExecuteScalar($"select value from {typeBill} where Id={bill_id}", CommandType.Text);
+            return (float)System.Convert.ToDouble(
+                DataProvider.Instance.ExecuteScalar(
+                    $"SELECT Value FROM {typeBill} WHERE Id='{bill_id}'", CommandType.Text));
         }
 
         public DataTable GetAllItemInBill(string bill_id)
         {
-            return DataProvider.Instance.ExecuteQuery("sp_GetAllItemInBill", CommandType.StoredProcedure, 
-                new SqlParameter("@TypeBill", typeBill),
-                new SqlParameter("@ID", bill_id));
+            string detailTable = (typeBill == "Imported") ? "ImportedDetail" : "OrderedDetail";
+            string fk = (typeBill == "Imported") ? "ImportedID" : "OrderedID";
+
+            string query = $@"
+                SELECT
+                    p.Name                       AS ItemName,
+                    d.Quantity,
+                    d.Price,
+                    (d.Quantity * d.Price)        AS TotalPrice
+                FROM {detailTable} d
+                INNER JOIN Product p ON d.ProductID = p.ID
+                WHERE d.{fk} = @ID";
+
+            return DataProvider.Instance.ExecuteQuery(
+                query, CommandType.Text, new SqlParameter("@ID", bill_id));
         }
 
+        // ════════════════════════════════════════════════════════
+        //  HÀM MỚI: Lấy toàn bộ sản phẩm đã nhập/bán
+        //  trong khoảng thời gian, tổng hợp theo tên SP
+        // ════════════════════════════════════════════════════════
+        /// <summary>
+        /// Trả về DataTable gồm: ItemName, TypeProduct, TotalQty, TotalPrice
+        /// cho tất cả hóa đơn có DateCreate trong [startDate, endDate].
+        /// </summary>
+        public DataTable GetItemsSummaryByDateRange(DateTime startDate, DateTime endDate)
+        {
+            string detailTable = (typeBill == "Imported") ? "ImportedDetail" : "OrderedDetail";
+            string billTable = typeBill;                // "Imported" hoặc "Ordered"
+            string fk = (typeBill == "Imported") ? "ImportedID" : "OrderedID";
+
+            string query = $@"
+                SELECT
+                    p.Name                          AS ItemName,
+                    p.TypeProduct,
+                    SUM(d.Quantity)                 AS TotalQty,
+                    SUM(d.Quantity * d.Price)       AS TotalPrice
+                FROM {detailTable} d
+                INNER JOIN {billTable} b ON d.{fk}     = b.ID
+                INNER JOIN Product     p ON d.ProductID = p.ID
+                WHERE CAST(b.DateCreate AS DATE)
+                      BETWEEN @StartDate AND @EndDate
+                GROUP BY p.Name, p.TypeProduct
+                ORDER BY TotalQty DESC";
+
+            return DataProvider.Instance.ExecuteQuery(
+                query,
+                CommandType.Text,
+                new SqlParameter("@StartDate", startDate.Date),
+                new SqlParameter("@EndDate", endDate.Date));
+        }
+
+        // ════════════════════════════════════════════════════════
+        //  HÀM MỚI: Tổng hợp theo LOẠI sản phẩm trong khoảng ngày
+        // ════════════════════════════════════════════════════════
+        /// <summary>
+        /// Trả về DataTable gồm: TypeProduct, TotalQty, TotalPrice
+        /// </summary>
+        public DataTable GetItemsByTypeSummaryByDateRange(DateTime startDate, DateTime endDate)
+        {
+            string detailTable = (typeBill == "Imported") ? "ImportedDetail" : "OrderedDetail";
+            string billTable = typeBill;
+            string fk = (typeBill == "Imported") ? "ImportedID" : "OrderedID";
+
+            string query = $@"
+                SELECT
+                    p.TypeProduct,
+                    SUM(d.Quantity)           AS TotalQty,
+                    SUM(d.Quantity * d.Price) AS TotalPrice
+                FROM {detailTable} d
+                INNER JOIN {billTable} b ON d.{fk}     = b.ID
+                INNER JOIN Product     p ON d.ProductID = p.ID
+                WHERE CAST(b.DateCreate AS DATE)
+                      BETWEEN @StartDate AND @EndDate
+                GROUP BY p.TypeProduct
+                ORDER BY TotalQty DESC";
+
+            return DataProvider.Instance.ExecuteQuery(
+                query,
+                CommandType.Text,
+                new SqlParameter("@StartDate", startDate.Date),
+                new SqlParameter("@EndDate", endDate.Date));
+        }
+
+        // ════════════════════════════════════════════════════════
+        //  Các hàm thống kê tổng giá trị (giữ nguyên)
+        // ════════════════════════════════════════════════════════
         public double? GetValueOfAllBills()
         {
-            string query = $"select sum(x.value) from {typeBill} x";
-            return (double?)DataProvider.Instance.ExecuteScalar(query, CommandType.Text, null);
+            object res = DataProvider.Instance.ExecuteScalar(
+                $"SELECT SUM(Value) FROM {typeBill}", CommandType.Text, null);
+            return (res == DBNull.Value) ? 0 : System.Convert.ToDouble(res);
         }
 
         public double? GetValueOfAllBills_Day(DateTime date)
         {
-            if(typeBill == "Imported")
-            {
-                object value = DataProvider.Instance.ExecuteScalar($"select dbo.func_TotalBuyOfDay('{GetFormatString.GetDateString(date)}')", CommandType.Text);
-                return (value.ToString() == "") ? null : (double?)value;
-            }
-            else
-            {
-                object value = DataProvider.Instance.ExecuteScalar($"select dbo.func_TotalSellOfDay('{GetFormatString.GetDateString(date)}')", CommandType.Text);
-                return (value.ToString() == "") ? null : (double?)value;
-            }
+            string funcName = (typeBill == "Imported") ? "func_TotalBuyOfDay" : "func_TotalSellOfDay";
+            object value = DataProvider.Instance.ExecuteScalar(
+                $"SELECT dbo.{funcName}('{GetFormatString.GetDateString(date)}')", CommandType.Text);
+            return (value == null || value.ToString() == "") ? 0 : System.Convert.ToDouble(value);
         }
 
         public double? GetValueOfAllBills_Month(DateTime date)
         {
-            if (typeBill == "Imported")
-            {
-                object value = DataProvider.Instance.ExecuteScalar($"select dbo.func_TotalBuyOfMonth({date.Month}, {date.Year})", CommandType.Text);
-                return (value.ToString() == "") ? null : (double?)value;
-            }
-            else
-            {
-                object value = DataProvider.Instance.ExecuteScalar($"select dbo.func_TotalSellOfMonth({date.Month}, {date.Year})", CommandType.Text);
-                return (value.ToString() == "") ? null : (double?)value;
-            }
+            string funcName = (typeBill == "Imported") ? "func_TotalBuyOfMonth" : "func_TotalSellOfMonth";
+            object value = DataProvider.Instance.ExecuteScalar(
+                $"SELECT dbo.{funcName}({date.Month}, {date.Year})", CommandType.Text);
+            return (value == null || value.ToString() == "") ? 0 : System.Convert.ToDouble(value);
         }
+
         public Dictionary<string, int> GetTopSellingProducts()
         {
-            Dictionary<string, int> result = new Dictionary<string, int>();
-
+            var result = new Dictionary<string, int>();
             string query = @"
-                SELECT TOP 10
-                    p.Name,
-                    SUM(od.Quantity) AS TotalSold
+                SELECT TOP 10 p.Name, SUM(od.Quantity) AS TotalSold
                 FROM OrderedDetail od
                 INNER JOIN Product p ON od.ProductID = p.ID
                 GROUP BY p.Name
                 ORDER BY SUM(od.Quantity) DESC";
 
-            DataTable dt = DataProvider.Instance.ExecuteQuery(query,CommandType.Text);
-
+            DataTable dt = DataProvider.Instance.ExecuteQuery(query, CommandType.Text);
             foreach (DataRow row in dt.Rows)
-            {
-                string name = row["Name"].ToString();
-                int total = System.Convert.ToInt32(row["TotalSold"]);
-
-                result.Add(name, total);
-            }
-
+                result.Add(row["Name"].ToString(), System.Convert.ToInt32(row["TotalSold"]));
             return result;
         }
-        //public DataTable FindBillByDateRange(DateTime from, DateTime to)
-        //{
-        //    string dateFrom = AdditionalFunctions.getDateString(from);
-        //    string dateTo = AdditionalFunctions.getDateString(to);
-        //    return DataProvider.Instance.ExecuteQuery($"select * from dbo.func_Find{typeBill}ByDateRange('{dateFrom}', {dateTo})", CommandType.Text);
-        //}
     }
 }

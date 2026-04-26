@@ -11,7 +11,14 @@ namespace BasicGroceryStore
         {
             dao = new DAO_Product();
         }
-
+        public bool CheckStock(string productID, int quantity)
+        {
+            return dao.CheckStock(productID, quantity);
+        }
+        public bool ReduceStock(string productID, int quantity)
+        {
+            return dao.ReduceStock(productID, quantity);
+        }
         public bool Create(Product product)
         {
             return dao.Create(product);
